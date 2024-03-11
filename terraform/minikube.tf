@@ -6,8 +6,8 @@ resource "minikube_cluster" "cluster" {
   memory       = "2000mb"
   nodes        = 2
   addons  = [
-    # "dashboard",
-    "ingress",
+    "dashboard",
+    # "ingress",
     "default-storageclass",
     "storage-provisioner"
   ]

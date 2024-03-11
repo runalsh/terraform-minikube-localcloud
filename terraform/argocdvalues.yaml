@@ -5,3 +5,7 @@ global:
 server:
   extraArgs:
   - --insecure
+
+configs:
+  secret:
+    argocdServerAdminPassword: "admin"
