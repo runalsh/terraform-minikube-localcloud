@@ -8,4 +8,4 @@ server:
 
 configs:
   secret:
-    argocdServerAdminPassword: "admin"
+    argocdServerAdminPassword: "runalsh123"

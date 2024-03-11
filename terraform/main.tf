@@ -17,6 +17,10 @@ terraform {
       source = "hashicorp/external"
       version = "2.3.3"
     }
+    null = {
+      source = "hashicorp/null"
+      version = "3.2.2"
+    }
   }
 }
 
@@ -29,9 +33,9 @@ provider "helm" {
 
 provider "kubernetes" {
   # host = minikube_cluster.docker.host
-
   # client_certificate     = minikube_cluster.docker.client_certificate
   # client_key             = minikube_cluster.docker.client_key
   # cluster_ca_certificate = minikube_cluster.docker.cluster_ca_certificate
   config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
 }
+
