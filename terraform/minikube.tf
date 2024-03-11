@@ -1,11 +1,16 @@
 resource "minikube_cluster" "cluster" {
-  vm      = true
   driver  = "docker"
-  cni     = "bridge"
+#   cni     = "auto"
+  cluster_name = var.clustername
+  cpus         = 2
+  memory       = "2000mb"
+  nodes        = 2
   addons  = [
-    "dashboard",
+    # "dashboard",
+    "ingress",
     "default-storageclass",
     "storage-provisioner"
   ]
 }
+
 
