@@ -14,6 +14,6 @@ locals {
 }
 
 variable "clustername" {
-  default     = "docker"
+  default     = "minikube"
   type        = string
 }

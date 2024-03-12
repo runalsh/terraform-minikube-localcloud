@@ -3,9 +3,12 @@ global:
     tag: "v2.8.11"
 
 server:
+  service:
+    type: NodePort
   extraArgs:
   - --insecure
 
 configs:
   secret:
-    argocdServerAdminPassword: "runalsh123"
+    argocdServerAdminPassword: $2a$10$9UlmxPDOiDAbtEdi0fXpw.ESTfASfMWgtoPo0JSknpp9hMQ8I7SEq
+    argocdServerAdminPasswordMtime: 2024-03-12T06:58:50Z

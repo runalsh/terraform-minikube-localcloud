@@ -1,5 +1,5 @@
 resource "minikube_cluster" "cluster" {
-  driver  = "docker"
+  driver  = "hyperv"
 #   cni     = "auto"
   cluster_name = var.clustername
   cpus         = 2
