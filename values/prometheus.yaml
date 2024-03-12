@@ -45,7 +45,7 @@ prometheus:
 
   prometheusSpec:
     # externalLabels:
-    #    cluster: "data-cluster-1" # update accordingly
+    #    cluster: "minikube" # update accordingly
     #    environment: "test"       # update accordingly
     storageSpec:
       volumeClaimTemplate:

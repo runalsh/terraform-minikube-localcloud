@@ -10,4 +10,4 @@ extraVolumeMounts:
 
 # Add Loki as a client to Promtail
 clients:
-  - url: http://loki-gateway.observability.svc.cluster.local/loki/api/v1/push
+  - url: http://loki-gateway/loki/api/v1/push
