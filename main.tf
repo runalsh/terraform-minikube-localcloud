@@ -49,10 +49,3 @@ provider "kubernetes" {
 }
 
 
-resource "terraform_data" "removehosts" {
-  provisioner "local-exec" {
-    when    = destroy
-    command = "findstr /v cluster.local C:/Windows/System32/drivers/etc/hosts > C:/Windows/System32/drivers/etc/hosts"
-  }
-}
-

@@ -1,5 +1,8 @@
 
-externalURL: https://coreharbor.cluster.local
+externalURL: http://coreharbor.cluster.local
+ipFamily:
+  ipv6:
+    enabled: false
 expose:
   tls:
     enabled: false
@@ -7,9 +10,9 @@ expose:
     hosts:
       core: coreharbor.cluster.local
       notary: notaryharbor.cluster.local
-harborAdminPassword: "runalsh123"      
-# updateStrategy:
-#   type: Recreate
+harborAdminPassword: "runalsh123"
+updateStrategy:
+  type: Recreate
 persistence:
   persistentVolumeClaim:
     registry:
@@ -23,3 +26,6 @@ persistence:
       size: 1Gi
     trivy:
       size: 1Gi
+database:
+  internal:
+    password: "runalsh123"

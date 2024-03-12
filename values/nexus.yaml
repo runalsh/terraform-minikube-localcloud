@@ -1,0 +1,20 @@
+
+# deploymentStrategy: Recreate
+# nexus:
+#   docker:
+#     enabled: false
+#     registries:
+#       - port: 5000
+#   properties:
+#     override: true
+#     data:
+#       nexus.scripts.allowCreation: true
+#       nexus.security.randompassword: false
+ingress:
+  enabled: true
+  # ingressClassName: nginx
+  # hostPath: /
+  hostRepo: nexus.cluster.local
+  # annotations:
+  #   nginx.ingress.kubernetes.io/proxy-body-size: "0"
+

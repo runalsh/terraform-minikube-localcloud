@@ -3,14 +3,14 @@ resource "minikube_cluster" "cluster" {
 #   cni     = "auto"
   cluster_name = var.clustername
   cpus         = 8
-  memory       = "4000mb"
+  memory       = "10000mb"
   nodes        = 1
   addons  = [
     "dashboard",
     "ingress",
     "default-storageclass",
-    "metrics-server",
-    "ingress-dns",
+    # "metrics-server",
+    # "ingress-dns",
     "storage-provisioner"
   ]
 }
