@@ -9,3 +9,9 @@ harbor
 nexus
 
 portainer
+
+gitlab (fu) + gitlab runner
+
+github runner (fu)
+
+crossplane (fu)
