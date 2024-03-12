@@ -19,13 +19,13 @@ datasources:
       basicAuth: false
       isDefault: true
       version: 1
-      editable: false
+      editable: true
 
     - name: Prometheus
       type: prometheus
       orgId: 1
-      url: http://prometheus-operated
+      url: http://prometheus-operated:9090
       basicAuth: false
       isDefault: false
       version: 1
-      editable: false
+      editable: true
