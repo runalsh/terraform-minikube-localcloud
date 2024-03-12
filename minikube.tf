@@ -9,6 +9,7 @@ resource "minikube_cluster" "cluster" {
     "dashboard",
     "ingress",
     "default-storageclass",
+    "metrics-server",
     "storage-provisioner"
   ]
 }
