@@ -1,5 +1,11 @@
-War is peace.
+Selfhosted local cloud - minikube via hyper-v with terraform
 
-Freedom is slavery.
+argocd
 
-Ignorance is strength.
+grafana prometheus loki promtail
+
+harbor
+
+nexus
+
+portainer
