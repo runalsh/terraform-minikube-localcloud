@@ -1,0 +1,25 @@
+
+externalURL: https://coreharbor.cluster.local
+expose:
+  tls:
+    enabled: false
+  ingress:
+    hosts:
+      core: coreharbor.cluster.local
+      notary: notaryharbor.cluster.local
+harborAdminPassword: "runalsh123"      
+# updateStrategy:
+#   type: Recreate
+persistence:
+  persistentVolumeClaim:
+    registry:
+      size: 10Gi
+    jobservice:
+      jobLog:
+        size: 1Gi
+    database:
+      size: 1Gi
+    redis:
+      size: 1Gi
+    trivy:
+      size: 1Gi

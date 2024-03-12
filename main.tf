@@ -25,6 +25,10 @@ terraform {
       source = "gavinbunney/kubectl"
       version = "1.14.0"
     }
+    harbor = {
+      source = "goharbor/harbor"
+      version = "3.10.8"
+    }
   }
   
 }
@@ -44,9 +48,11 @@ provider "kubernetes" {
   config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
 }
 
+
 resource "terraform_data" "removehosts" {
   provisioner "local-exec" {
     when    = destroy
     command = "findstr /v cluster.local C:/Windows/System32/drivers/etc/hosts > C:/Windows/System32/drivers/etc/hosts"
   }
 }
+

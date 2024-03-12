@@ -1,3 +1,9 @@
+# resource "kubernetes_namespace" "portainer-namespace" {
+#   metadata {
+#     name = "portainer"
+#   }
+# }
+
 # resource "helm_release" "portainer" {
 #   name             = "portainer"
 #   repository       = "https://portainer.github.io/k8s/"
