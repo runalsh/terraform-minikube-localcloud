@@ -21,10 +21,10 @@ terraform {
       source = "hashicorp/null"
       version = "3.2.2"
     }
-    # kubectl = {
-    #   source = "gavinbunney/kubectl"
-    #   version = "1.14.0"
-    # }
+    kubectl = {
+      source = "gavinbunney/kubectl"
+      version = "1.14.0"
+    }
   }
   
 }
@@ -46,7 +46,7 @@ provider "kubernetes" {
 
 resource "terraform_data" "removehosts" {
   provisioner "local-exec" {
-    when    = "destroy"
+    when    = destroy
     command = "findstr /v argocd.io C:/Windows/System32/drivers/etc/hosts > C:/Windows/System32/drivers/etc/hosts"
   }
 }
