@@ -10,6 +10,8 @@ nexus
 
 portainer
 
+vault (fu)
+
 gitlab (fu) + gitlab runner
 
 github runner (fu)
