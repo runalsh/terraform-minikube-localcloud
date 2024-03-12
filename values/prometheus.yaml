@@ -1,0 +1,62 @@
+alertmanager:
+  enabled: false
+
+grafana:
+  enabled: false
+
+prometheusOperator:
+  enabled: true
+
+kubeApiServer:
+  enabled: false
+
+kubelet:
+  enabled: true
+
+kubeControllerManager:
+  enabled: false
+
+coreDns:
+  enabled: false
+
+kubeDns:
+  enabled: false
+
+kubeEtcd:
+  enabled: false
+
+kubeScheduler:
+  enabled: false
+
+kubeProxy:
+  enabled: false
+
+kubeStateMetrics:
+  enabled: true
+
+nodeExporter:
+  enabled: true
+
+prometheus-node-exporter:
+  enabled: true
+
+prometheus:
+  enabled: true
+
+  prometheusSpec:
+    # externalLabels:
+    #    cluster: "data-cluster-1" # update accordingly
+    #    environment: "test"       # update accordingly
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: standard
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 1Gi
+    # remoteWrite:
+    #   - url: "http://remote-write-thanos/api/v1/write"
+    #     queue_config:
+    #       batch_send_deadline: 30s
+    #       max_shards: 10
