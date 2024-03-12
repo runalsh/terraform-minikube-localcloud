@@ -21,7 +21,12 @@ terraform {
       source = "hashicorp/null"
       version = "3.2.2"
     }
+    kubectl = {
+      source = "gavinbunney/kubectl"
+      version = "1.14.0"
+    }
   }
+  
 }
 
 provider "helm" {
@@ -39,3 +44,11 @@ provider "kubernetes" {
   config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
 }
 
+
+resource "kubectl_manifest" "manifests" {
+    count     = length(data.kubectl_filename_list.manifests.matches)
+    yaml_body = file(element(data.kubectl_filename_list.manifests.matches, count.index))
+}
+data "kubectl_filename_list" "manifests" {
+    pattern = "./manifests/*.yaml"
+}

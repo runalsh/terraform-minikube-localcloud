@@ -2,12 +2,12 @@ resource "minikube_cluster" "cluster" {
   driver  = "hyperv"
 #   cni     = "auto"
   cluster_name = var.clustername
-  cpus         = 2
-  memory       = "2000mb"
-  nodes        = 2
+  cpus         = 8
+  memory       = "4000mb"
+  nodes        = 1
   addons  = [
     "dashboard",
-    # "ingress",
+    "ingress",
     "default-storageclass",
     "storage-provisioner"
   ]
