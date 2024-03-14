@@ -10,7 +10,7 @@ gitlab runner
 
 Plans: 
 integrate gitlab with minio and harbor\nexus,
-monio,
+minio,
 github runner,
 argocd rollut + image updater,
 vault,
