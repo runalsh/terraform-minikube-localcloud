@@ -1,0 +1,26 @@
+
+
+runnerRegistrationToken: "runalsh123"
+gitlabUrl: http://gitlab-webservice-default.gitlab.svc.cluster.local:8181
+# gitlabUrl: http://gitlab.minikube.local
+
+unregisterRunners: true
+imagePullPolicy: IfNotPresent
+runners:
+  runUntagged: true
+  tags: local, gitlabrunnernamespace
+  config: |
+    [[runners]]
+      [runners.kubernetes]
+        image = "alpine:latest"
+        privileged = true
+rbac:
+  create: true
+checkInterval: 20
+resources:
+  limits:
+    memory: 256Mi
+    cpu: 200m
+  requests:
+    memory: 128Mi
+    cpu: 100m

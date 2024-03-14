@@ -1,3 +1,3 @@
-War is peace.
-Freedom is slavery.
-Ignorance is strength.
+# War is peace.
+# Freedom is slavery.
+# Ignorance is strength.

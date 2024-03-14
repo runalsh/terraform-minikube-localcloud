@@ -17,3 +17,10 @@ variable "clustername" {
   default     = "minikube"
   type        = string
 }
+
+# variable "minikube_ip" {
+#   type = string
+# }
+
+
+

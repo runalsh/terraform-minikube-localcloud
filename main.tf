@@ -29,8 +29,11 @@ terraform {
       source = "goharbor/harbor"
       version = "3.10.8"
     }
+    # terracurl = {
+    #   source = "devops-rob/terracurl"
+    #   version = "1.2.1"
+    # }
   }
-  
 }
 
 provider "helm" {
@@ -48,4 +51,5 @@ provider "kubernetes" {
   config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
 }
 
+# provider "terracurl" {}
 
