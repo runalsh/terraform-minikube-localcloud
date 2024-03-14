@@ -4,11 +4,14 @@ argocd,
 grafana prometheus loki promtail,
 harbor,
 nexus,
-portainer
+portainer,
+gitlab,
+gitlab runner
 
 Plans: 
+integrate gitlab with minio and harbor\nexus,
+monio,
+github runner,
 argocd rollut + image updater,
 vault,
-gitlab  + gitlab runner,
-github runner,
-crossplane,
+crossplane (for fun)

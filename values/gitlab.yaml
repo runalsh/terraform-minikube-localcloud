@@ -13,7 +13,7 @@ global:
   hosts:
     domain: minikube.local
     # todo replace with output of `minikube ip` dynamically
-    externalIP: 172.29.9.238
+    # externalIP: 172.29.9.238
   # shell:
   #   # Configure the clone link in the UI to include the high-numbered NodePort
   #   # value from below (`gitlab.gitlab-shell.service.nodePort`)
@@ -54,7 +54,7 @@ certmanager:
 nginx-ingress:
   enabled: false
 gitlab-runner:
-  gitlabUrl: https://gitlab-webservice-default:8181
+  gitlabUrl: http://gitlab-webservice-default:8181
   install: true
   privileged: true
 # Provide gitlab-runner with secret object containing self-signed certificate chain
