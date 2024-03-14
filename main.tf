@@ -25,10 +25,10 @@ terraform {
       source = "gavinbunney/kubectl"
       version = "1.14.0"
     }
-    harbor = {
-      source = "goharbor/harbor"
-      version = "3.10.8"
-    }
+    # harbor = {
+    #   source = "goharbor/harbor"
+    #   version = "3.10.8"
+    # }
     # terracurl = {
     #   source = "devops-rob/terracurl"
     #   version = "1.2.1"
