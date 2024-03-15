@@ -26,5 +26,5 @@ resource "helm_release" "localstack" {
       debug       = false
     })
   ]
-  depends_on = [ kubernetes_namespace.localstack-namespace ]
+  depends_on = [ kubernetes_namespace.localstack-namespace, resource.kubectl_manifest.localstack-cert ]
 }
