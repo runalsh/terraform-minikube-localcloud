@@ -7,7 +7,8 @@ nexus,
 portainer,
 gitlab,
 gitlab runner,
-localstack (aws emulator)
+localstack (aws emulator),
+cert-manager
 
 Plans: 
 integrate gitlab with minio (as s3 cache) and harbor\nexus,
@@ -16,6 +17,8 @@ github runner,
 argocd rollut + image updater + try workflow,
 vault,
 jaeger,
-openfaas,
-trivy,
-crossplane (for fun)
+openfaas (very very interesting),
+trivy (aqua?),
+crossplane (for fun, idn working it with minikube or not)
+
+Big plan: made all as module
