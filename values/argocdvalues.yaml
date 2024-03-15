@@ -4,14 +4,24 @@ global:
 
 server:
   # ingress:
-  #   enabled: true
-  #   ingressClassName: nginx
+    # enabled: true
+    # ingressClassName: nginx
+    # hosts: 
+      # - blblbla
   service:
     type: ""
   extraArgs:
   - --insecure
+  # - --enable-skip-login
+  # - --enable-insecure-login
+  # - --disable-settings-authorizer
 
 configs:
   secret:
     argocdServerAdminPassword: $2a$10$9UlmxPDOiDAbtEdi0fXpw.ESTfASfMWgtoPo0JSknpp9hMQ8I7SEq #runalsh123
     argocdServerAdminPasswordMtime: 2024-03-12T06:58:50Z
+
+rbac:
+  create: true
+  clusterRoleMetrics: true
+  clusterReadOnlyRole: true

@@ -14,9 +14,14 @@ resource "minikube_cluster" "cluster" {
     "ingress",
     "default-storageclass",
     # "metrics-server",
-    # "ingress-dns",
+    "ingress-dns",
     "storage-provisioner"
   ]
 }
 
+# Open Powershell as Administrator and execute the following.
+# Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
+# The following will remove any matching rules before creating a new one. This is useful for updating the minikube ip.
+# Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.test'} | Remove-DnsClientNrptRule -Force; Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
+# https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 

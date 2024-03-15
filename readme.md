@@ -6,12 +6,16 @@ harbor,
 nexus,
 portainer,
 gitlab,
-gitlab runner
+gitlab runner,
+localstack (aws emulator)
 
 Plans: 
-integrate gitlab with minio and harbor\nexus,
+integrate gitlab with minio (as s3 cache) and harbor\nexus,
 minio,
 github runner,
-argocd rollut + image updater,
+argocd rollut + image updater + try workflow,
 vault,
+jaeger,
+openfaas,
+trivy,
 crossplane (for fun)
