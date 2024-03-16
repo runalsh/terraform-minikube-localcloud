@@ -44,7 +44,7 @@ resource "helm_release" "kube-prometheus" {
   name       = "kube-prometheus-stack"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
-  version    = "57.0.2"
+  version    = "57.0.3"
   namespace  = "observability"
 
   values = [file("${path.module}/values/prometheus.yaml")]
