@@ -4,12 +4,13 @@
 #   }
 # }
 
-# resource "helm_release" "gitlab" {
-#   name = "gitlab"
-#   repository = "https://charts.gitlab.io/"
-#   chart      = "gitlab"
-#   namespace  = "gitlab"
-#   version = "7.9.2"
+resource "helm_release" "gitlab" {
+  name = "gitlab"
+  repository = "https://charts.gitlab.io/"
+  chart      = "gitlab"
+  version = "7.9.2"
+  namespace  = "gitlab"
+  
 
 #   values = [file("${path.module}/values/gitlab.yaml")]
 #   depends_on = [ kubernetes_namespace.gitlab-namespace, resource.kubectl_manifest.gitlab-passwd-token] 
