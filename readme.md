@@ -8,13 +8,13 @@ portainer,
 gitlab,
 gitlab runner,
 localstack (aws emulator),
-cert-manager
+cert-manager,
+argocd rollut + image updater,
+minio
 
 Plans: 
 integrate gitlab with minio (as s3 cache) and harbor\nexus,
-minio,
 github runner,
-argocd rollut + image updater + try workflow,
 vault,
 jaeger,
 openfaas (very very interesting),
