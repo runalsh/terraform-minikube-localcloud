@@ -11,7 +11,7 @@
 #   chart            = "argo-cd"
 #   namespace        = "argocd"
 #   create_namespace = true
-#   version          = "6.6.0"
+#   version          = "6.6.0"  # renovate: depName=argoproj/argo-helm extractVersion=^argo-cd-(?<version>.+)$
 #   force_update     = true
 #   values = [file("${path.module}/values/argocdvalues.yaml")]
 # }
