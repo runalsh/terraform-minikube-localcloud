@@ -13,11 +13,6 @@ locals {
   kubectl_config_path = local.os == "Windows" ? "%USERPROFILE%\\.kube\\config" : "~/.kube/config"
 }
 
-variable "clustername" {
-  default     = "minikube"
-  type        = string
-}
-
 # variable "minikube_ip" {
 #   type = string
 # }

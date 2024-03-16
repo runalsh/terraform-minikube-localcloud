@@ -21,4 +21,5 @@ openfaas (very very interesting),
 trivy (aqua?),
 crossplane (for fun, idn working it with minikube or not)
 
-Big plan: made all as module
+Big plan: 
+made all as tf modules or as argocd charts

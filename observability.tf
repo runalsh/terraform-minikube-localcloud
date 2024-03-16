@@ -40,15 +40,15 @@
 #   depends_on = [ kubernetes_namespace.observability-namespace ]
 # }
 
-resource "helm_release" "kube-prometheus" {
-  name       = "kube-prometheus-stack"
-  namespace  = "observability"
-  version    = "57.0.2"
-  repository = "https://prometheus-community.github.io/helm-charts"
-  chart      = "kube-prometheus-stack"
+# resource "helm_release" "kube-prometheus" {
+#   name       = "kube-prometheus-stack"
+#   namespace  = "observability"
+#   version    = "57.0.2"
+#   repository = "https://prometheus-community.github.io/helm-charts"
+#   chart      = "kube-prometheus-stack"
 
-  values = [file("${path.module}/values/prometheus.yaml")]
-  # may be here https://github.com/tiagoangelototvs/testkube-playground/blob/main/prometheus.tf
-  # values https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
-  depends_on = [ kubernetes_namespace.observability-namespace ]
-}
+#   values = [file("${path.module}/values/prometheus.yaml")]
+#   # may be here https://github.com/tiagoangelototvs/testkube-playground/blob/main/prometheus.tf
+#   # values https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+#   depends_on = [ kubernetes_namespace.observability-namespace ]
+# }

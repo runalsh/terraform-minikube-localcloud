@@ -58,6 +58,9 @@ provider "kubernetes" {
 
 # provider "terracurl" {}
 
-provider "docker" {
-  host = local.is_windows != true ? null : "npipe:////.//pipe//docker_engine"
-}
+# provider "docker" {
+#   host = local.is_windows != true ? null : "npipe:////.//pipe//docker_engine"
+# }
+# locals {
+#   is_windows = substr(pathexpand("~"), 0, 1) == "/" ? false : true
+# }
