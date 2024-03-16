@@ -31,7 +31,7 @@ resource "null_resource" "dnszonedestroy" {
     when       = destroy
     # command = "dnszonedestroy.ps1"
     command = "Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.minikube.local'} | Remove-DnsClientNrptRule -Force"
-    interpreter = ["PowerShell", "-File"]
+    interpreter = ["PowerShell", "-Command"]
   }
   depends_on = [ resource.minikube_cluster.cluster ]
 }
