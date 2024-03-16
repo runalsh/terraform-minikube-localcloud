@@ -1,4 +1,4 @@
-mode: standalone
+mode: distributed  # standalone   
 
 rootUser: "runalsh"
 rootPassword: "runalsh123"
@@ -8,9 +8,17 @@ resources:
     memory: 512Mi
 
 replicas: 1
+pools: 1
+drivesPerNode: 1
 
 consoleIngress:
   enabled: true
   path: /
   hosts:
     - console.minio.minikube.local
+
+ingress:
+  enabled: true
+  path: /
+  hosts:
+    - minio.minikube.local
