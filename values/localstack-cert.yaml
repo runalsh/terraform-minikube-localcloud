@@ -10,4 +10,4 @@ spec:
     kind: ClusterIssuer
   commonName: localstack-cert
   dnsNames:
-  - 'localstack.infrastructure.${domain-name}'
+  - 'localstack.${domain-name}'

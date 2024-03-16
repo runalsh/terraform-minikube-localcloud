@@ -1,0 +1,16 @@
+mode: standalone
+
+rootUser: "runalsh"
+rootPassword: "runalsh123"
+
+resources:
+  requests:
+    memory: 512Mi
+
+replicas: 1
+
+consoleIngress:
+  enabled: true
+  path: /
+  hosts:
+    - console.minio.minikube.local

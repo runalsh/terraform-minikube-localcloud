@@ -12,9 +12,16 @@
 #   lint             = false
 #   cleanup_on_fail  = true
 #   create_namespace = true
-
-#   values = [yamlencode({
-#     service = { type = "ClusterIP" }
-
-#   })]
+#   set {
+#     name  = "ingress.enabled"
+#     value = "true"
+#   }
+#   set {
+#     name  = "ingress.hosts[0].host"
+#     value = "portainer.minikube.local"
+#   }
+#   set {
+#     name  = "ingress.hosts[0].paths[0].path"
+#     value = "/"
+#   }
 # }

@@ -24,8 +24,8 @@
 #     namespace = "cert-manager"
 #   }
 #   data = {
-#     "tls.crt" = file("../certs/cacerts.crt")
-#     "tls.key" = file("../certs/cacerts.key")
+#     "tls.crt" = file("./certs/cacerts.crt")
+#     "tls.key" = file("./certs/cacerts.key")
 #   }
 #   type = "kubernetes.io/tls"
 # }

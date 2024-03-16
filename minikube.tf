@@ -18,9 +18,27 @@ resource "minikube_cluster" "cluster" {
   ]
 }
 
+resource "null_resource" "dnszone" {
+  provisioner "local-exec" {
+    command = "Add-DnsClientNrptRule -Namespace '.minikube.local' -NameServers '$(minikube ip)'"
+    interpreter = ["PowerShell", "-Command"]
+  }
+  depends_on = [ resource.minikube_cluster.cluster ]
+}
+
+resource "null_resource" "dnszonedestroy" {
+  provisioner "local-exec" {
+    when       = destroy
+    # command = "dnszonedestroy.ps1"
+    command = "Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.minikube.local'} | Remove-DnsClientNrptRule -Force"
+    interpreter = ["PowerShell", "-File"]
+  }
+  depends_on = [ resource.minikube_cluster.cluster ]
+}
+
 # Open Powershell as Administrator and execute the following.
-# Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
+# Add-DnsClientNrptRule -Namespace ".minikube.local" -NameServers "$(minikube ip)"
 # The following will remove any matching rules before creating a new one. This is useful for updating the minikube ip.
-# Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.test'} | Remove-DnsClientNrptRule -Force; Add-DnsClientNrptRule -Namespace ".test" -NameServers "$(minikube ip)"
+# Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.minikube.local'} | Remove-DnsClientNrptRule -Force; Add-DnsClientNrptRule -Namespace ".minikube.local" -NameServers "$(minikube ip)"
 # https://minikube.sigs.k8s.io/docs/handbook/addons/ingress-dns/
 

@@ -9,3 +9,15 @@
 #   description = "argocd nodeport"
 # }
 
+# resource "terraform_data" "Get-DnsClientNrptRule" {
+#   provisioner "local-exec" {
+#     command =  "DnsClientNrptRule -Namespace \".minikube.local\""
+#     interpreter = ["PowerShell", "-Command"]
+#   }
+#   depends_on = [ resource.minikube_cluster.cluster ]
+# }
+
+# output "Get-DnsClientNrptRule" {
+#   value = terraform_data.Get-DnsClientNrptRule.output
+#   description = "dns rule"
+# }
