@@ -10,7 +10,7 @@ resource "helm_release" "harbor" {
   name             = "harbor"
   repository       = "https://helm.goharbor.io"
   chart            = "harbor"
-  version          = "0.1"
+  version          = "1.14.0"
   namespace        = "harbor"
 
   values = [file("${path.module}/values/harbor.yaml")]

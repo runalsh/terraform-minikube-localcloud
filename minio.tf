@@ -9,7 +9,7 @@ resource "helm_release" "minio_cluster" {
   name       = "minio-cluster"
   repository = "https://charts.min.io"
   chart      = "minio"
-  version    = "0.1"
+  version    = "13.8.4"
   namespace  = "minio"
   values = [file("${path.module}/values/minio.yaml")]
   depends_on = [resource.kubernetes_namespace.minio-namespace]

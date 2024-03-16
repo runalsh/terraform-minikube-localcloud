@@ -8,7 +8,7 @@ resource "helm_release" "portainer" {
   name             = "portainer"
   repository       = "https://portainer.github.io/k8s/"
   chart            = "portainer"
-  version          = "0.1"
+  version          = "1.0.49"
   namespace        = "portainer"
   lint             = false
   cleanup_on_fail  = true
