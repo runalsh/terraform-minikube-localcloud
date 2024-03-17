@@ -1,5 +1,5 @@
 
-externalURL: http://coreharbor.cluster.local
+externalURL: http://coreharbor.minikube.local
 ipFamily:
   ipv6:
     enabled: false
@@ -8,8 +8,8 @@ expose:
     enabled: false
   ingress:
     hosts:
-      core: coreharbor.cluster.local
-      notary: notaryharbor.cluster.local
+      core: coreharbor.minikube.local
+      notary: notaryharbor.minikube.local
 harborAdminPassword: "runalsh123"
 updateStrategy:
   type: Recreate

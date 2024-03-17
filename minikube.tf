@@ -14,8 +14,7 @@ resource "minikube_cluster" "cluster" {
     "default-storageclass",
     # "metrics-server",
     "ingress-dns",
-    "storage-provisioner"
-  ]
+    "storage-provisioner"   #not compatible with multi node , will use csi-driver instead  ]
 }
 
 resource "null_resource" "dnszone" {

@@ -3,11 +3,11 @@ global:
     tag: "v2.8.11"
 
 server:
-  # ingress:
-    # enabled: true
-    # ingressClassName: nginx
-    # hosts: 
-      # - blblbla
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts: 
+      - argocd.minikube.local
   service:
     type: ""
   extraArgs:

@@ -25,15 +25,6 @@ terraform {
       source = "gavinbunney/kubectl"
       version = "1.14.0"
     }
-    # docker = {
-    #   source                = "kreuzwerker/docker"
-    #   version               = "3.0.2"
-    #   configuration_aliases = [docker.docker-windows]
-    # }
-    # harbor = {
-    #   source = "goharbor/harbor"
-    #   version = "3.10.8"
-    # }
     # terracurl = {
     #   source = "devops-rob/terracurl"
     #   version = "1.2.1"
@@ -57,10 +48,3 @@ provider "kubernetes" {
 }
 
 # provider "terracurl" {}
-
-# provider "docker" {
-#   host = local.is_windows != true ? null : "npipe:////.//pipe//docker_engine"
-# }
-# locals {
-#   is_windows = substr(pathexpand("~"), 0, 1) == "/" ? false : true
-# }

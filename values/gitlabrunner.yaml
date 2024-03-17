@@ -1,7 +1,7 @@
 
 
 runnerRegistrationToken: "runalsh123"
-gitlabUrl: http://gitlab-webservice-default.gitlab.svc.cluster.local:8181
+gitlabUrl: http://gitlab-webservice-default.gitlab.svc.minikube.local:8181
 # gitlabUrl: http://gitlab.minikube.local
 
 unregisterRunners: true

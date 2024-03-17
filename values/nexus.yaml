@@ -14,7 +14,7 @@ ingress:
   enabled: true
   # ingressClassName: nginx
   # hostPath: /
-  hostRepo: nexus.cluster.local
+  hostRepo: nexus.minikube.local
   # annotations:
   #   nginx.ingress.kubernetes.io/proxy-body-size: "0"
 
