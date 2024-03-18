@@ -25,17 +25,18 @@ terraform {
       source = "gavinbunney/kubectl"
       version = "1.14.0"
     }
+    kind = {
+      source = "tehcyx/kind"
+      version = "0.4.0"
+    }
+    http = {
+      source  = "hashicorp/http"
+      version = "3.4.2"
+    }
     # terracurl = {
     #   source = "devops-rob/terracurl"
     #   version = "1.2.1"
     # }
-  }
-}
-
-provider "helm" {
-  kubernetes {
-    config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
-    config_context = minikube_cluster.cluster.cluster_name
   }
 }
 

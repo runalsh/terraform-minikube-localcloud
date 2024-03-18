@@ -14,8 +14,17 @@ resource "minikube_cluster" "cluster" {
     "default-storageclass",
     # "metrics-server",
     "ingress-dns",
-    "storage-provisioner"   #not compatible with multi node , will use csi-driver instead  ]
+    "storage-provisioner"   #not compatible with multi node , will use csi-driver instead  
+    ]
 }
+
+provider "helm" {
+  kubernetes {
+    config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
+    config_context = minikube_cluster.cluster.cluster_name
+  }
+}
+
 
 resource "null_resource" "dnszone" {
   provisioner "local-exec" {
@@ -28,7 +37,6 @@ resource "null_resource" "dnszone" {
 resource "null_resource" "dnszonedestroy" {
   provisioner "local-exec" {
     when       = destroy
-    # command = "dnszonedestroy.ps1"
     command = "Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.minikube.local'} | Remove-DnsClientNrptRule -Force"
     interpreter = ["PowerShell", "-Command"]
   }

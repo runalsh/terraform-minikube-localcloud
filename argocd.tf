@@ -28,5 +28,5 @@
 # }
 
 # data "kubectl_filename_list" "argocduihttps" {
-#     pattern = "./manifests/argocduihttps.yaml.yaml"
+#     pattern = "./manifests/argocduihttps.yaml"
 # }
