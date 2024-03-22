@@ -12,8 +12,14 @@
 #   version          = "6.7.2"
 #   namespace        = "argocd"
 #   force_update     = true
-#   values = [file("${path.module}/values/argocdvalues.yaml")]
+#   values = [templatefile("./values/argocdvalues.yaml", {
+#     host = "argocd.${local_domain}"
+#     argocdServerAdminPassword = bcrypt(var.argocd_admin_pass)
+#     argocdServerAdminPasswordMtime = time_static.now.rfc3339
+#   })]
 # }
+
+# resource "time_static" "now" {}
 
 # resource "kubectl_manifest" "argocd_dashboard" {
 #   yaml_body = file("${path.module}/dashboards/argocd-grafana-dashboard.yaml")

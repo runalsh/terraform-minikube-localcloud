@@ -19,7 +19,7 @@
 #   }
 #   set {
 #     name  = "ingress.hosts[0].host"
-#     value = "portainer.minikube.local"
+#     value = "portainer.${local_domain}"
 #   }
 #   set {
 #     name  = "ingress.hosts[0].paths[0].path"

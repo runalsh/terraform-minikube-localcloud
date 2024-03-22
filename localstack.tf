@@ -21,7 +21,7 @@
 #   wait_for_jobs = true
 #   values = [
 #     templatefile("${path.module}/values/localstack-values.yaml", {
-#       domain-name = "minikube.local"
+#       domain-name = ${local_domain}
 #       namespace   = "localstack"
 #       debug       = false
 #     })

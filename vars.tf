@@ -17,5 +17,12 @@ locals {
 #   type = string
 # }
 
+variable "argocd_admin_pass" {
+  type = string
+  default = "runalsh123"
+}
 
-
+variable "local_domain" { #${local_domain}
+  type = string
+  default = "minikube.local"
+}

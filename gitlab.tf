@@ -32,7 +32,7 @@
 
 # data "terracurl_request" "test" {
 #   name   = "check"
-#   url    = "http://gitlab.minikube.local"
+#   url    = "http://gitlab.${local_domain}"
 #   method = "GET"
 #   skip_tls_verify = true
 #   response_codes = [200]

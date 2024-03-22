@@ -7,7 +7,7 @@ server:
     enabled: true
     ingressClassName: nginx
     hosts: 
-      - argocd.minikube.local
+      - ${host}
   service:
     type: ""
   extraArgs:
@@ -18,8 +18,8 @@ server:
 
 configs:
   secret:
-    argocdServerAdminPassword: $2a$10$9UlmxPDOiDAbtEdi0fXpw.ESTfASfMWgtoPo0JSknpp9hMQ8I7SEq #runalsh123
-    argocdServerAdminPasswordMtime: 2024-03-12T06:58:50Z
+    argocdServerAdminPassword: ${argocdServerAdminPassword} #$2a$10$9UlmxPDOiDAbtEdi0fXpw.ESTfASfMWgtoPo0JSknpp9hMQ8I7SEq #runalsh123
+    argocdServerAdminPasswordMtime: ${argocdServerAdminPasswordMtime}
 
 rbac:
   create: true
