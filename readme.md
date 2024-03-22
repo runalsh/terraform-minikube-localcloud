@@ -9,7 +9,7 @@ gitlab,
 gitlab runner,
 localstack (aws emulator),
 cert-manager,
-argocd rollut + image updater,
+argocd rollout + image updater,
 minio
 
 Plans: 
