@@ -3,7 +3,7 @@ resource "minikube_cluster" "cluster" {
 #   cni     = "auto" #calico
   cluster_name      = "minikube"
   cpus              = 8
-  memory            = "10000mb"
+  memory            = "15000mb"
   nodes             = 1
   # apiserver_ips     = ["127.0.0.1", "localhost", "192.168.50.1"]
   # subnet            = "192.168.50.0"
