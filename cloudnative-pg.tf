@@ -8,7 +8,7 @@
 #   name             = "cnpg"
 #   repository       = "https://cloudnative-pg.github.io/charts"
 #   chart            = "cloudnative-pg"
-#   version          = "0.20.0"
+#   version          = "0.20.2"
 #   namespace        = "cloudnative-pg"
 
 #   values = [file("${path.module}/values/cloudnative-pg.yaml")]
