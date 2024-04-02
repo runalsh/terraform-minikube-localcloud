@@ -11,7 +11,7 @@ localstack (aws emulator),
 cert-manager,
 argocd rollout + image updater,
 minio,
-cloudnative-pg + cloudnative-pg cluster
+cloudnative-pg + init db
 
 Plans: 
 integrate gitlab with minio (as s3 cache) and harbor\nexus,
