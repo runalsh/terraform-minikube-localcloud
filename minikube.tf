@@ -28,7 +28,7 @@ provider "helm" {
 
 resource "null_resource" "dnszone" {
   provisioner "local-exec" {
-    command = "Add-DnsClientNrptRule -Namespace '.minikube.local' -NameServers '$(minikube ip)'"
+    command = "Add-DnsClientNrptRule -Namespace '.minikube.local' -NameServers $(minikube ip)"
     interpreter = ["PowerShell", "-Command"]
   }
   depends_on = [ resource.minikube_cluster.cluster ]

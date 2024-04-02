@@ -1,0 +1,26 @@
+type: postgresql
+mode: standalone
+
+cluster:
+  instances: 1
+  storage:
+    size: 1Gi
+    storageClass: ""
+  initdb:
+    database: database
+    owner: database # Defaults to the database name
+    secret: "" # Name of the secret containing the initial credentials for the owner of the user database. If empty a new secret will be created from scratch
+    postInitSQL:
+      - CREATE EXTENSION IF NOT EXISTS vector;
+
+pooler:
+  enabled: true
+  type: rw
+  poolMode: transaction
+  instances: 1
+  parameters:
+    max_client_conn: "1000"
+    default_pool_size: "25"    
+
+backups:
+  enabled: false

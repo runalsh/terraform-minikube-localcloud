@@ -1,0 +1,8 @@
+replicaCount: 1
+
+service:
+  type: ClusterIP
+  # -- DO NOT CHANGE THE SERVICE NAME as it is currently used to generate the certificate
+  # and can not be configured
+  name: cnpg-webhook-service
+  port: 443
