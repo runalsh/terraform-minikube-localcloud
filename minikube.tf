@@ -5,7 +5,7 @@ resource "minikube_cluster" "cluster" {
   cpus              = 8
   memory            = "15000mb"
   nodes             = 1
-  kubernetes_version = "v1.29.3"
+  # kubernetes_version = "v1.29.3"
   # apiserver_ips     = ["127.0.0.1", "localhost", "192.168.50.1"]
   # subnet            = "192.168.50.0"
   # force_systemd     = true # for wsl\docker
@@ -16,9 +16,20 @@ resource "minikube_cluster" "cluster" {
     "ingress-dns",
     "default-storageclass",
     # "metrics-server",
-    "storage-provisioner"   #not compatible with multi node , will use csi-driver instead  
+    "storage-provisioner"   #not compatible with multi node , will use csi-driver instead -   "csi-hostpath-driver"
     ]
 }
+
+# resource "kubernetes_annotations" "csi-hostpath-annotations" {
+#   api_version = "storage.k8s.io/v1"
+#   kind        = "StorageClass"
+#   metadata {
+#     name = "csi-hostpath-sc"
+#   }
+#   annotations = {
+#     "storageclass.kubernetes.io/is-default-class" = "true"
+#   }
+# }
 
 provider "helm" {
   kubernetes {
