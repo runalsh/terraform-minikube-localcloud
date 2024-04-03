@@ -33,14 +33,16 @@ resource "kubectl_manifest" "argocd_dashboard" {
 }
 
 resource "kubectl_manifest" "argocduihttps" {
-    count     = length(data.kubectl_filename_list.argocduihttps.matches)
-    yaml_body = file(element(data.kubectl_filename_list.argocduihttps.matches, count.index))
+    yaml_body = file("${path.module}/manifests/argocduihttps.yaml")
+    # count     = length(data.kubectl_filename_list.argocduihttps.matches)
+    # yaml_body = file(element(data.kubectl_filename_list.argocduihttps.matches, count.index))
     depends_on = [
         helm_release.argocd,
         kubernetes_namespace.argocd-namespace 
     ]
+    count = var.argocd ? 1 : 0 
 }
 
-data "kubectl_filename_list" "argocduihttps" {
-    pattern = "./manifests/argocduihttps.yaml"
-}
+# data "kubectl_filename_list" "argocduihttps" {
+#     pattern = "./manifests/argocduihttps.yaml"
+# }
