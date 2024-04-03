@@ -11,7 +11,7 @@ resource "helm_release" "harbor" {
   name             = "harbor"
   repository       = "https://helm.goharbor.io"
   chart            = "harbor"
-  version          = "1.14.0"
+  version          = "1.14.1"
   namespace        = "harbor"
   count = var.harbor ? 1 : 0
 
