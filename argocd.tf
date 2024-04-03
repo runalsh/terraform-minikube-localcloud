@@ -11,14 +11,98 @@ resource "helm_release" "argocd" {
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
   version          = "6.7.8"
-  namespace        = "argocd"
+  namespace        = kubernetes_namespace.argocd-namespace
   count = var.argocd ? 1 : 0  
   force_update     = true
-  values = [templatefile("./values/argocdvalues.yaml", {
+  values = [templatefile("${path.module}/values/argocdvalues.yaml", {
     host = "argocd.${var.local_domain}"
     argocdServerAdminPassword = bcrypt(var.argocd_admin_pass)
     argocdServerAdminPasswordMtime = time_static.now.rfc3339
   })]
+}
+
+resource "helm_release" "argocd_project" {
+  description = "projects"
+  depends_on = [
+    helm_release.argocd
+  ]
+  name         = "projects"
+  repository   = "https://argoproj.github.io/argo-helm"
+  chart        = "argocd-apps"
+  version      = "2.0.0"
+  namespace    = kubernetes_namespace.argocd-namespace
+  force_update = true
+  count = var.argocd_app_of_apps ? 1 : 0 
+   values = [
+    yamlencode({
+      projects = [
+        for project in var.argocd_projects : {
+          name = project
+          sourceRepos = [
+            "*"
+          ]
+          destinations = [
+            {
+              namespace = "*"
+              server    = "*"
+            }
+          ]
+          clusterResourceWhitelist = [
+            {
+              group = "*"
+              kind  = "*"
+            }
+          ]
+        }
+      ]
+    })
+  ]
+}
+
+resource "helm_release" "application" {
+  description = "Initial app of app"
+  depends_on = [
+    helm_release.argocd
+  ]
+  name         = "applications"
+  repository   = "https://argoproj.github.io/argo-helm"
+  chart        = "argocd-apps"
+  version      = "2.0.0"
+  namespace    = kubernetes_namespace.argocd-namespace
+  force_update = true
+  count = var.argocd_app_of_apps ? 1 : 0 
+  values = [
+    yamlencode({
+      # field values reference -> https://github.com/argoproj/argo-helm/blob/main/charts/argocd-apps/values.yaml
+      applications = [
+        for key, value in var.argocd_applications : {
+          name    = key
+          project = value.application_project
+          additionalLabels = {
+            "app.kubernetes.io/managed-by" = "terraform"
+          }
+          source = {
+            repoURL        = value.repoURL
+            targetRevision = value.targetRevision
+            path           = value.path
+          }
+          destination = {
+            namespace = value.destination_namespace
+            server    = "https://kubernetes.default.svc"
+          }
+          syncPolicy = {
+            automated = {
+              prune    = true
+              selfHeal = true
+            }
+            syncOptions = [
+              "CreateNamespace=true"
+            ]
+          }
+        }
+      ]
+    })
+  ]
 }
 
 resource "time_static" "now" {}

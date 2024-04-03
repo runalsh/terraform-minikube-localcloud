@@ -22,11 +22,13 @@ resource "helm_release" "gitlab" {
 }
 
 resource "kubectl_manifest" "gitlab-passwd-token" {
-    count     = length(data.kubectl_filename_list.gitlab-passwd-token.matches)
-    yaml_body = file(element(data.kubectl_filename_list.gitlab-passwd-token.matches, count.index))
+    yaml_body = file("${path.module}/manifests/gitlabpasswdtoken.yaml")
+    # count     = length(data.kubectl_filename_list.gitlab-passwd-token.matches)
+    # yaml_body = file(element(data.kubectl_filename_list.gitlab-passwd-token.matches, count.index))
     depends_on = [ kubernetes_namespace.gitlab-namespace ]
+    count = var.gitlabrunner ? 1 : 0
 }
 
-data "kubectl_filename_list" "gitlab-passwd-token" {
-    pattern = "./manifests/gitlab-passwd-token.yaml"
-}
+# data "kubectl_filename_list" "gitlab-passwd-token" {
+#     pattern = "./manifests/gitlab-passwd-token.yaml"
+# }

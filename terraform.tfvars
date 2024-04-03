@@ -15,17 +15,31 @@ cloudnative-pg = false
 cloudnative-pg-cluster = false
 cert-manager = false
 argocd = false
+argocd_app_of_apps = false
 argocd-rollouts = false
 argocd-imageupdater = false
-observability = false
 terracurl_request = false
 
+observability = false
+observability_promtail = false
+observability_loki = false
+observability_grafana = false
+observability_kube-prometheus  = false
 
 
+argocd_projects = [
+  "non-default"
+]
 
-
-
-
+argocd_applications = {
+  app-of-apps = {
+    application_project   = "non-default"
+    repoURL               = "https://github.com/runalsh/terraform-minikube-localcloud.git"
+    targetRevision        = "HEAD"
+    path                  = "apps/dev"
+    destination_namespace = "argocd-app-of-apps"
+  }
+}
 
 
 

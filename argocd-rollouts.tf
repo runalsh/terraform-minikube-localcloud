@@ -5,7 +5,11 @@ resource "helm_release" "argo-rollouts" {
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-rollouts"
   version          = "2.35.1" 
-  namespace        = "argocd"
-  values = [file("values/argo-rollouts.yaml")]
+  namespace        = kubernetes_namespace.argocd-namespace
+  values = [file("${path.module}/values/argo-rollouts.yaml")]
   count = var.argocd-rollouts ? 1 : 0
+  depends_on = [
+    helm_release.argocd,
+    kubernetes_namespace.argocd-namespace
+  ]
 }

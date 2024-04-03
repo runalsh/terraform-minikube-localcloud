@@ -12,7 +12,7 @@ resource "helm_release" "grafana" {
   chart            = "grafana"
   version          = "7.3.7"
   namespace        = "observability"
-  count = var.observability ? 1 : 0
+  count = var.observability_grafana ? 1 : 0
 
   values = [file("${path.module}/values/grafana.yaml")]
   depends_on = [ kubernetes_namespace.observability-namespace ]
@@ -25,7 +25,7 @@ resource "helm_release" "loki" {
   chart      = "loki"
   version    = "5.47.2"
   namespace  = "observability"
-  count = var.observability ? 1 : 0
+  count = var.observability_loki ? 1 : 0
 
   values = [file("${path.module}/values/loki.yaml")]
   depends_on = [ kubernetes_namespace.observability-namespace ]
@@ -38,7 +38,7 @@ resource "helm_release" "promtail" {
   chart      = "promtail"
   version    = "6.15.5"
   namespace  = "observability"
-  count = var.observability ? 1 : 0
+  count = var.observability_promtail ? 1 : 0
 
   values = [file("${path.module}/values/promtail.yaml")]
   depends_on = [ kubernetes_namespace.observability-namespace ]
@@ -50,7 +50,7 @@ resource "helm_release" "kube-prometheus" {
   chart      = "kube-prometheus-stack"
   version    = "57.2.0"
   namespace  = "observability"
-  count = var.observability ? 1 : 0
+  count = var.observability_kube-prometheus ? 1 : 0
 
   values = [file("${path.module}/values/prometheus.yaml")]
   # may be here https://github.com/tiagoangelototvs/testkube-playground/blob/main/prometheus.tf
