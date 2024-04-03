@@ -132,6 +132,10 @@ variable "github-runner-controller" {
   default = false
 }
 
+variable "vault" {
+  type = bool
+  default = false
+}
 
 variable "argocd_projects" {
   description = "ArgoCD projects"

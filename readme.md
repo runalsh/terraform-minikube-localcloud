@@ -11,16 +11,15 @@ localstack (aws emulator),
 cert-manager,
 argocd rollout + image updater,
 minio,
-cloudnative-pg + init db
+cloudnative-pg + init db,
+github runner
 
 Plans: 
 integrate gitlab with minio (as s3 cache) and harbor\nexus,
-github runner,
 vault,
 jaeger,
 openfaas (very very interesting),
 trivy (aqua?),
 crossplane (for fun, idn working it with minikube or not)
 
-Big plan: 
- - 
+

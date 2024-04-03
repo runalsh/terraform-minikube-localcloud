@@ -1,0 +1,26 @@
+injector:
+  enabled: true
+  metrics:
+    enabled: true
+
+global:
+  enabled: true
+  tlsDisable: true
+server:
+  auditStorage:
+    enabled: false
+  service:
+    enabled: true
+  standalone:
+    enabled: false
+  ha:
+    enabled: true
+    raft:
+      enabled: True      
+  
+ui:
+  enabled: true
+  serviceType: "LoadBalancer"
+  loadBalancerIP: "0.0.0.0"
+  serviceNodePort: null
+  externalPort: 8200
