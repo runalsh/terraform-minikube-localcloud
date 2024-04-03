@@ -1,4 +1,7 @@
 terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
   required_version = ">= 1.1"
   required_providers {
     helm = {
@@ -37,6 +40,14 @@ terraform {
       source = "devops-rob/terracurl"
       version = "1.2.1"
     }
+    template = {
+      source = "hashicorp/template"
+      version = "2.2.0"
+    }
+    local = {
+      source = "hashicorp/local"
+      version = "2.5.1"
+    }  
   }
 }
 

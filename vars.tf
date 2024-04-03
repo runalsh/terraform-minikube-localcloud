@@ -127,6 +127,12 @@ variable "observability_kube-prometheus" {
   default = false
 }
 
+variable "github-runner-controller" {
+  type = bool
+  default = false
+}
+
+
 variable "argocd_projects" {
   description = "ArgoCD projects"
   type        = list(string)

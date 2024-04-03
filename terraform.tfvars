@@ -19,6 +19,8 @@ argocd_app_of_apps = false
 argocd-rollouts = false
 argocd-imageupdater = false
 terracurl_request = false
+github-runner-controller = false
+
 
 observability = false
 observability_promtail = false

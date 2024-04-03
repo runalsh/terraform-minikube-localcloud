@@ -1,0 +1,5 @@
+authSecret:
+     github_token: ${githubkey}
+     create: true
+runnerLabels:
+  - ink8s     
