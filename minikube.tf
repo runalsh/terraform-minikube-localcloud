@@ -55,7 +55,14 @@ resource "null_resource" "dnszonedestroy" {
   }
   depends_on = [ resource.minikube_cluster.cluster ]
 }
-
+resource "null_resource" "minikubedestroy" {
+  provisioner "local-exec" {
+    when       = destroy
+    command = "minikube delete --purge"
+    interpreter = ["PowerShell", "-Command"]
+  }
+  depends_on = [ resource.minikube_cluster.cluster ]
+}
 # Open Powershell as Administrator and execute the following.
 # Add-DnsClientNrptRule -Namespace ".minikube.local" -NameServers "$(minikube ip)"
 # The following will remove any matching rules before creating a new one. This is useful for updating the minikube ip.
