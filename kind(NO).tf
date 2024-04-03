@@ -100,7 +100,7 @@
 #   }
 #   set {
 #     name = "server.ingress.hosts"
-#     value = "minikube.local"
+#     value = var.local_domain
 #   }
 #   set {
 #     name = "configs.secret.argocdServerAdminPassword"

@@ -5,12 +5,12 @@ resource "kubernetes_namespace" "portainer-namespace" {
   }
 }
 
-resource "helm_release" "portainer" {
-  count = var.portainer ? 1 : 0    
+resource "helm_release" "portainer" { 
   name             = "portainer"
   repository       = "https://portainer.github.io/k8s/"
   chart            = "portainer"
   version          = "1.0.49"
+  count = var.portainer ? 1 : 0   
   namespace        = "portainer"
   lint             = false
 

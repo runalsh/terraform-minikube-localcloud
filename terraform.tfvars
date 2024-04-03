@@ -4,7 +4,7 @@
 
 local_domain = "minikube.local"
 
-portainer = true
+portainer = false
 nexus = false
 minio = false
 localstack = false
@@ -19,3 +19,18 @@ argocd-rollouts = false
 argocd-imageupdater = false
 observability = false
 terracurl_request = false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
