@@ -3,7 +3,7 @@ resource "minikube_cluster" "cluster" {
 #   cni     = "auto" #calico
   cluster_name      = "minikube"
   cpus              = 8
-  memory            = "15000mb"
+  memory            = "10000mb"
   nodes             = 1
   # kubernetes_version = "v1.29.3"
   # apiserver_ips     = ["127.0.0.1", "localhost", "192.168.50.1"]
