@@ -6,7 +6,7 @@ resource "kubernetes_namespace" "localstack-namespace" {
 }
 
 resource "kubectl_manifest" "localstack-cert" {
-  yaml_body = templatefile("${path.module}/values/localstack-cert.yaml", {
+  yaml_body = templatefile("${path.module}/manifests/localstack-cert.yaml", {
     domain-name = var.local_domain
     namespace   = "localstack"
   })
