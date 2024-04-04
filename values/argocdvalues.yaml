@@ -1,6 +1,6 @@
-global:
-  image:
-    tag: "v2.8.11"
+# global:
+#   image:
+#     tag: "v2.8.11"
 
 server:
   ingress:
