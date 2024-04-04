@@ -6,7 +6,7 @@ terraform {
   required_providers {
     helm = {
       source = "hashicorp/helm"
-      version = "2.12.1"
+      version = "2.13.0"
     }
     minikube = {
       source = "scott-the-programmer/minikube"
