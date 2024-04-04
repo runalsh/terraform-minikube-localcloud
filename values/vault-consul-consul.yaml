@@ -1,5 +1,5 @@
 global:
-  datacenter: vault-kubernetes-tutorial
+  datacenter: vault-kubernetes
 
 client:
   enabled: true

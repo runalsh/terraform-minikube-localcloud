@@ -137,6 +137,11 @@ variable "vault" {
   default = false
 }
 
+variable "vault-consul" {
+  type = bool
+  default = false
+}
+
 variable "argocd_projects" {
   description = "ArgoCD projects"
   type        = list(string)

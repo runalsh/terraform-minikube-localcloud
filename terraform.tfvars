@@ -21,13 +21,13 @@ argocd-imageupdater = false
 terracurl_request = false
 github-runner-controller = false
 vault = false
+vault-consul = false
 
 observability = false
 observability_promtail = false
 observability_loki = false
 observability_grafana = false
 observability_kube-prometheus  = false
-
 
 argocd_projects = [
   "non-default"
