@@ -12,11 +12,13 @@ cert-manager,
 argocd rollout + image updater,
 minio,
 cloudnative-pg + init db,
-github runner
+github runner,
+vault,
+vault + consul secret managment for internal apps
 
 Plans: 
+add tf module for vault to managment secrets outside cluster on deploy,
 integrate gitlab with minio (as s3 cache) and harbor\nexus,
-vault,
 jaeger,
 openfaas (very very interesting),
 trivy (aqua?),
