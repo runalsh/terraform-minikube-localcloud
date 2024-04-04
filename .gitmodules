@@ -4,3 +4,6 @@
 [submodule "charts/vault"]
 	path = charts/vault
 	url = https://github.com/hashicorp/vault-helm
+[submodule "charts/consul"]
+	path = charts/consul
+	url = https://github.com/hashicorp/consul-k8s
