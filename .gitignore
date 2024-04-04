@@ -2,3 +2,4 @@
 *tfstate*
 *.hcl
 githubkey.json
+cluster-keys.json
