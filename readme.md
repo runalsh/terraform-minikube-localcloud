@@ -1,4 +1,5 @@
-## Selfhosted local cloud ( on Windows :D ) - minikube via hyper-v with terraform
+# Selfhosted local cloud ( on Windows :D )
+## minikube driver hyper-v terraform
 Ready:
   -  argocd,
   -  grafana prometheus loki promtail,
