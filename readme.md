@@ -12,9 +12,9 @@ Ready:
   -  argocd rollout + image updater,
   -  minio,
   -  cloudnative-pg + init db,
-  -  github runner,
+  -  github runner controller,
   -  vault,
-  -  vault + consul secret managment for internal apps
+  -  vault + consul secret managment for internal apps with axmaple
 
 Plans: 
   -  add tf module for vault to managment secrets outside cluster on deploy,
