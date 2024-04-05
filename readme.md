@@ -16,10 +16,10 @@ Ready:
   -  github runner controller,
   -  vault,
   -  vault + consul secret managment for simple internal apps with example,
-  -  csi secret storage + vault
+  -  csi secret storage + vault,
+  -  vault local instance using terrafom provider
 
 Plans: 
-  -  add tf module for vault to managment secrets outside cluster on deploy,
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
   -  jaeger,
   -  openfaas (very very interesting),

@@ -5,6 +5,7 @@ provider "vault" {
 }
 
 resource "null_resource" "vaultlocalrun" {
+  count = var.vault-local ? 1 : 0  
   provisioner "local-exec" {
     command = "vault server -config=${path.module}/vault-local/config.hcl"
     interpreter = ["PowerShell", "-Command"]
@@ -13,6 +14,7 @@ resource "null_resource" "vaultlocalrun" {
 }
 
 resource "null_resource" "vaultlocalunseal" {
+  count = var.vault-local ? 1 : 0  
   provisioner "local-exec" {
     command = "vault operator unseal -address http://127.0.0.1:8200 XMJgGblGtxMVwDnE0n05FNcxqnn/ZFeLVtW04jnU3nI="
     interpreter = ["PowerShell", "-Command"]
