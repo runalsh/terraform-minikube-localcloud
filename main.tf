@@ -65,7 +65,3 @@ provider "kubernetes" {
 
 provider "terracurl" {}
 
-provider "vault" {
-  address = "http://127.0.0.1:8200"
-  token = "hvs.IbmqmSNMN4fmFwfJCwIfLpHf" # from vault-local/cluster-keys.json # jq -r ".unseal_keys_b64 []" ./vault-local/cluster-keys.json
-}
