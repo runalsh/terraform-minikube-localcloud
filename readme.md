@@ -17,7 +17,7 @@ Ready:
   -  vault,
   -  vault + consul secret managment for simple internal apps with example,
   -  csi secret storage + vault,
-  -  vault local instance using terrafom provider
+  -  vault local instance (non k8s) used by terrafom provider
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
