@@ -7,7 +7,8 @@ provider "vault" {
 resource "null_resource" "vaultlocalrun" {
   count = var.vault-local ? 1 : 0  
   provisioner "local-exec" {
-    command = "vault server -config=${path.module}/vault-local/config.hcl"
+    # command = "vault server -config=${path.module}/vault-local/config.hcl"
+    command = "sc start Vault"
     interpreter = ["PowerShell", "-Command"]
   }
   depends_on = [ resource.minikube_cluster.cluster ]
@@ -22,6 +23,15 @@ resource "null_resource" "vaultlocalunseal" {
   depends_on = [ resource.minikube_cluster.cluster, null_resource.vaultlocalrun ]
 }
 
+resource "null_resource" "vaultlocalrun" {
+  count = var.vault-local ? 1 : 0  
+  provisioner "local-exec" {
+    when       = destroy
+    command = "sc stop Vault"
+    interpreter = ["PowerShell", "-Command"]
+  }
+  depends_on = [ resource.minikube_cluster.cluster ]
+}
 
 # cd F:\Temp\terraform-minikube-localcloud\vault-local
 # vault server -config=F:/Temp/terraform-minikube-localcloud/vault-local/config.hcl

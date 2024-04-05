@@ -23,7 +23,7 @@ github-runner-controller = false
 vault = false
 vault-consul = false
 csi-secret-storage = false
-vault-local = true
+vault-local = false
 
 observability = false
 observability_promtail = false

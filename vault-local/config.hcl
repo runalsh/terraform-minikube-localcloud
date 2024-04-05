@@ -1,5 +1,5 @@
 storage "raft" {
-  path    = "./vault/data"
+  path    = "F:/Temp/terraform-minikube-localcloud/vault-local/vault/data"
   node_id = "vault"
 }
 
