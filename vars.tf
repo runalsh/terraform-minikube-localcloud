@@ -152,6 +152,41 @@ variable "csi-secret-storage" {
   default = false
 }
 
+variable "vault-k8s-tls" {
+  type = bool
+  default = false
+}
+
+variable "vault-k8s-server" {
+  type = bool
+  default = false
+}
+
+variable "vault-k8s-vaultparam" {
+  type = object({
+    nodes     = optional(number, 3)
+    initialization = optional(object({
+      shares    = number
+      threshold = number
+      }), {
+      shares    = 5
+      threshold = 3
+    })
+  })
+}
+
+# variable "kubernetes" {
+#   type = object({
+#     enabled                  = optional(bool, true)
+#     kms                      = optional(bool, false)
+#     external_secrets_manager = optional(bool, true)
+#     vault_secrets_operator   = optional(bool, true)
+#     vault_agent_injector     = optional(bool, true)
+#     csi                      = optional(bool, true)
+#     cert_manager             = optional(bool, true)
+#   })
+# }
+
 variable "argocd_projects" {
   description = "ArgoCD projects"
   type        = list(string)

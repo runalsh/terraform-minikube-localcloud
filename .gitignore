@@ -1,5 +1,5 @@
 .terraform
 *tfstate*
-# *.hcl
+.terraform.lock.hcl
 githubkey.json
 *.db

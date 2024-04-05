@@ -25,6 +25,18 @@ vault-consul = false
 csi-secret-storage = false
 vault-local = false
 
+# vault k8s pure
+vault-k8s-tls = true
+vault-k8s-server = false
+
+vault-k8s-vaultparam = {
+  nodes = 1
+  initialization = {
+    shares    = 1
+    threshold = 1
+  }
+}
+
 observability = false
 observability_promtail = false
 observability_loki = false
@@ -45,7 +57,15 @@ argocd_applications = {
   }
 }
 
-
+# kubernetes = {
+#   enabled = true
+#   kms = true
+#   external_secrets_manager = true
+#   vault_secrets_operator = true
+#   csi = true
+#   cert_manager = true
+#   vault_agent_injector = true
+# }
 
 
 
