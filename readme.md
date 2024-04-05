@@ -15,11 +15,12 @@ Ready:
   -  cloudnative-pg + init db,
   -  github runner controller,
   -  vault,
-  -  vault + consul secret managment for internal apps with axmaple
+  -  vault + consul secret managment for internal apps with example,
+  -  csi secret storage
 
 Plans: 
   -  add tf module for vault to managment secrets outside cluster on deploy,
-  -  integrate gitlab with minio (as s3 cache) and harbor\nexus,
+  -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
   -  jaeger,
   -  openfaas (very very interesting),
   -  trivy (aqua?),

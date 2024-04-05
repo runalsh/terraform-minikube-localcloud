@@ -22,6 +22,7 @@ terracurl_request = false
 github-runner-controller = false
 vault = false
 vault-consul = false
+csi-secret-storage = false
 
 observability = false
 observability_promtail = false

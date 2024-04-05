@@ -142,6 +142,11 @@ variable "vault-consul" {
   default = false
 }
 
+variable "csi-secret-storage" {
+  type = bool
+  default = false
+}
+
 variable "argocd_projects" {
   description = "ArgoCD projects"
   type        = list(string)

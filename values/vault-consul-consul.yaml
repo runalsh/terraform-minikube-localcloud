@@ -1,5 +1,3 @@
-global:
-  datacenter: vault-kubernetes
 
 client:
   enabled: true

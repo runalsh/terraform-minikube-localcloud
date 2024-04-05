@@ -47,7 +47,11 @@ terraform {
     local = {
       source = "hashicorp/local"
       version = "2.5.1"
-    }  
+    }
+    vault = {
+      source = "hashicorp/vault"
+      version = "4.2.0"
+    }
   }
 }
 
@@ -59,4 +63,6 @@ provider "kubernetes" {
   config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
 }
 
-# provider "terracurl" {}
+provider "terracurl" {}
+
+provider "vault" {}
