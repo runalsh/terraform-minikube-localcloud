@@ -15,8 +15,8 @@ Ready:
   -  cloudnative-pg + init db,
   -  github runner controller,
   -  vault,
-  -  vault + consul secret managment for internal apps with example,
-  -  csi secret storage
+  -  vault + consul secret managment for simple internal apps with example,
+  -  csi secret storage + vault
 
 Plans: 
   -  add tf module for vault to managment secrets outside cluster on deploy,
