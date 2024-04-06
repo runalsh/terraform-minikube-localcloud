@@ -8,11 +8,11 @@ locals {
 }
 
 resource "local_file" "vault" {
-  content = templatefile("${path.module}/vault-docker-haproxy/vault.hcl", {
+  content = templatefile("${path.module}/vault.hcl", {
     vaults = local.vaults
   })
 
-  filename = "${path.module}/vault-docker-haproxy/output/vault.hcl"
+  filename = "${path.module}/output/vault.hcl"
 }
 
 resource "docker_container" "vault" {

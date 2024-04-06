@@ -182,7 +182,7 @@ variable "vault-docker-haproxy" {
 variable "vault-docker-haproxy-param" {
   type = object({
     ip_subnet = optional(string, "172.16.10.0/24")
-    version   = optional(string, "1.15")
+    version   = optional(string, "1.16.1")
     base_port = optional(number, 8000)
     nodes     = optional(number, 3)
     initialization = optional(object({

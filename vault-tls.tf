@@ -1,5 +1,5 @@
 module "vault-tls" {
-  source = "./vault-k8s/tls-init"
+  source = "./vault-tls"
 
   count = var.vault-k8s-tls ? 1 : 0  
 

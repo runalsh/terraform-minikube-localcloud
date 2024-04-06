@@ -2,7 +2,7 @@ terraform {
   backend "local" {
     path = "terraform.tfstate"
   }
-  required_version = ">= 1.1"
+  required_version = ">= 1.6"
   required_providers {
     helm = {
       source = "hashicorp/helm"
@@ -55,6 +55,10 @@ terraform {
     tls = {
       source  = "hashicorp/tls"
       version = "4.0.5"
+    }
+    docker = {
+      source  = "kreuzwerker/docker"
+      version = "3.0.2"
     }
   }
 }

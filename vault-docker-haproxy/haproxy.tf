@@ -1,9 +1,9 @@
 resource "local_file" "haproxy" {
-  content = templatefile("${path.module}/../templates/haproxy.cfg", {
+  content = templatefile("${path.module}/haproxy.cfg", {
     vaults = local.vaults
   })
 
-  filename = "${path.module}/../output/haproxy.cfg"
+  filename = "${path.module}/output/haproxy.cfg"
 }
 
 resource "docker_container" "haproxy" {
