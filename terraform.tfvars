@@ -37,6 +37,19 @@ vault-k8s-vaultparam = {
   }
 }
 
+# VAULT DOCKER WITH HAPROXY
+vault-docker-haproxy = false
+vault-docker-haproxy-param = {
+  nodes = 3
+  ip_subnet = "172.16.10.0/24"
+  version = "1.15"
+  base_port = 8000
+  initialization = {
+    shares    = 5
+    threshold = 3
+  }
+}
+
 observability = false
 observability_promtail = false
 observability_loki = false

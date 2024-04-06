@@ -175,6 +175,26 @@ variable "vault-k8s-vaultparam" {
   })
 }
 
+variable "vault-docker-haproxy" {
+  type = bool
+  default = false
+}
+variable "vault-docker-haproxy-param" {
+  type = object({
+    ip_subnet = optional(string, "172.16.10.0/24")
+    version   = optional(string, "1.15")
+    base_port = optional(number, 8000)
+    nodes     = optional(number, 3)
+    initialization = optional(object({
+      shares    = number
+      threshold = number
+      }), {
+      shares    = 5
+      threshold = 3
+    })
+  })
+}
+
 # variable "kubernetes" {
 #   type = object({
 #     enabled                  = optional(bool, true)

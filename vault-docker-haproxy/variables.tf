@@ -17,3 +17,7 @@ variable "initialization" {
     threshold = number
   })
 }
+
+variable "vault_version" {
+  type = string
+}
