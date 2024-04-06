@@ -1,7 +1,7 @@
 module "vault-docker-haproxy" {
   source = "./vault-docker-haproxy"
   
-  count = var.vault-docker-haproxy-param ? 1 : 0
+  count = var.vault-docker-haproxy ? 1 : 0
 
   vault_nodes   = var.vault-docker-haproxy-param.nodes
   ip_subnet     = var.vault-docker-haproxy-param.ip_subnet
@@ -14,3 +14,7 @@ module "vault-docker-haproxy" {
 
   depends_on = [module.vault-tls]
 }
+
+# vault status -address https://127.0.0.1 -ca-cert ./vault-tls/output/ca.crt  
+
+# terraform apply -target module.vault-tls -target module.vault-docker-haproxy --auto-approve

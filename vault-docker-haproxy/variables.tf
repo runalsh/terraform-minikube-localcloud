@@ -20,4 +20,5 @@ variable "initialization" {
 
 variable "vault_version" {
   type = string
+  default = "latest"
 }

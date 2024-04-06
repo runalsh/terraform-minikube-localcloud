@@ -8,7 +8,7 @@ resource "local_file" "haproxy" {
 
 resource "docker_container" "haproxy" {
   name  = "haproxy"
-  image = "haproxy:latest"
+  image = "haproxy:alpine"
 
   ports {
     internal = 443
@@ -22,8 +22,14 @@ resource "docker_container" "haproxy" {
     ip       = "0.0.0.0"
   }
 
+  ports {
+    internal = 8200
+    external = 8200
+    ip       = "0.0.0.0"
+  }
+
   volumes {
-    host_path      = abspath(local_file.haproxy.filename)
+    host_path      = abspath(local_file.haproxy.filename) #"F:/Temp/terraform-minikube-localcloud/vault-docker-haproxy/output/haproxy.cfg"
     container_path = "/usr/local/etc/haproxy/haproxy.cfg"
     read_only      = true
   }
@@ -32,9 +38,9 @@ resource "docker_container" "haproxy" {
     name = docker_network.vault.name
   }
 
-  lifecycle {
-    ignore_changes = all
-  }
+  # lifecycle {
+  #   ignore_changes = all
+  # }
 
   depends_on = [docker_container.vault]
 }

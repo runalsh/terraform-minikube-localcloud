@@ -22,7 +22,7 @@ resource "docker_container" "vault" {
   image = "hashicorp/vault:${var.vault_version}"
 
   env = [
-    "VAULT_ADDR=https://0.0.0.:8200",
+    "VAULT_ADDR=https://0.0.0.0:8200",
     "VAULT_RAFT_NODE_ID=${each.key}",
   ]
 
@@ -97,7 +97,7 @@ resource "terracurl_request" "init" {
 
 resource "local_file" "vault_token" {
   content  = jsondecode(terracurl_request.init.response).root_token
-  filename = ".vault_token"
+  filename = "${path.root}/vault-docker-haproxy/output/.vault_token"
 }
 
 locals {
