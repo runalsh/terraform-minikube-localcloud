@@ -2,3 +2,5 @@
 *tfstate*
 githubkey.json
 *.db
+vault-docker-haproxy\output\*
+vault-tls\output\*
