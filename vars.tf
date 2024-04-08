@@ -152,6 +152,12 @@ variable "csi-secret-storage" {
   default = false
 }
 
+
+variable "local-oci-repo" {
+  type = bool
+  default = false
+}
+
 variable "vault-k8s-tls" {
   type = bool
   default = false

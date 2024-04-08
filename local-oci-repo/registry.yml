@@ -15,15 +15,19 @@ storage:
   delete:
     enabled: true
   cache:
-    blobdescriptor: inmemory  
+    blobdescriptor: inmemory
 
 http:
   addr: ":5000"
   net: tcp
   headers:
+    X-Content-Type-Options: [nosniff]
+    Access-Control-Allow-Origin: ['*']
     Access-Control-Allow-Methods: ['HEAD', 'GET', 'OPTIONS', 'DELETE']
     Access-Control-Allow-Headers: ['Authorization', 'Accept', 'Cache-Control']
     Access-Control-Expose-Headers: ['Docker-Content-Digest']
+    Access-Control-Max-Age: [1728000]
+    Access-Control-Allow-Credentials: [true]
   
 prometheus:
   enabled: true
@@ -38,6 +42,11 @@ proxy:
 # {
 #   "registry-mirrors": ["https://<my-docker-mirror-host>"]
 # }
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
 
 
 # https://distribution.github.io/distribution/about/configuration/#delete  
@@ -46,20 +55,20 @@ proxy:
 #     realm: basic-realm
 #     path: /etc/docker/registry/access/.htpasswd
 
-# notifications:
-#   events:
-#     includereferences: true
-#   endpoints:
-#     - name: ra-listener
-#       disabled: false
-#       url: http://registry-admin/api/v1/registry/events
-#       headers:
-#         Authorization: [ Basic YWRtaW46c3VwZXItc2VjcmV0] # 'admin:super-secret' base64 encode string
-#       timeout: 1s
-#       threshold: 5
-#       backoff: 3s
-#       ignoredmediatypes:
-#         - application/octet-stream
-#       ignore:
-#         mediatypes:
-#           - application/octet-stream    
+notifications:
+  events:
+    includereferences: true
+  endpoints:
+    - name: ra-listener
+      disabled: false
+      url: http://registry-ui/api/v1/registry/events
+      # headers:
+        # Authorization: [ Basic YWRtaW46c3VwZXItc2VjcmV0] # 'admin:super-secret' base64 encode string
+      timeout: 1s
+      threshold: 5
+      backoff: 3s
+      ignoredmediatypes:
+        - application/octet-stream
+      ignore:
+        mediatypes:
+          - application/octet-stream    

@@ -24,6 +24,7 @@ vault = false
 vault-consul = false
 csi-secret-storage = false
 vault-local = false
+local-oci-repo = false
 
 # vault k8s pure
 vault-k8s-tls = true
