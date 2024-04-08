@@ -1,0 +1,65 @@
+version: 0.1
+
+log:
+  accesslog:
+    disabled: false
+  level: debug
+  formatter: text
+  fields:
+    service: registry
+
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+    maxthreads: 100
+  delete:
+    enabled: true
+  cache:
+    blobdescriptor: inmemory  
+
+http:
+  addr: ":5000"
+  net: tcp
+  headers:
+    Access-Control-Allow-Methods: ['HEAD', 'GET', 'OPTIONS', 'DELETE']
+    Access-Control-Allow-Headers: ['Authorization', 'Accept', 'Cache-Control']
+    Access-Control-Expose-Headers: ['Docker-Content-Digest']
+  
+prometheus:
+  enabled: true
+  path: /metrics
+
+proxy:
+  remoteurl: https://registry-1.docker.io
+  # username: [username]
+  # password: [password]
+  ttl: 168h
+# /etc/docker/daemon.json in settings
+# {
+#   "registry-mirrors": ["https://<my-docker-mirror-host>"]
+# }
+
+
+# https://distribution.github.io/distribution/about/configuration/#delete  
+# auth:
+#   htpasswd:
+#     realm: basic-realm
+#     path: /etc/docker/registry/access/.htpasswd
+
+# notifications:
+#   events:
+#     includereferences: true
+#   endpoints:
+#     - name: ra-listener
+#       disabled: false
+#       url: http://registry-admin/api/v1/registry/events
+#       headers:
+#         Authorization: [ Basic YWRtaW46c3VwZXItc2VjcmV0] # 'admin:super-secret' base64 encode string
+#       timeout: 1s
+#       threshold: 5
+#       backoff: 3s
+#       ignoredmediatypes:
+#         - application/octet-stream
+#       ignore:
+#         mediatypes:
+#           - application/octet-stream    

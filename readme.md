@@ -18,7 +18,8 @@ Ready:
   -  vault + consul secret managment for simple internal apps with example,
   -  csi secret storage + vault,
   -  vault local instance (non k8s) used by terrafom provider,
-  -  vault local on docker with haproxy as load balancer
+  -  vault local on docker with haproxy as load balancer,
+  -  local OCI registry (docker)
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,

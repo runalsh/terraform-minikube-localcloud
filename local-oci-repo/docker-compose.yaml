@@ -1,0 +1,60 @@
+version: "3.8"
+
+services:
+  registry:
+    restart: unless-stopped
+    image: registry:2
+    ports:
+      - 5000:5000
+    volumes:
+      - ./docker-registry/data/internal:/var/lib/registry
+      - ./docker-registry/data/certs:/certs
+      - ./registry.yml:/etc/docker/registry/config.yml
+      - ./docker-registry/data/access:/etc/docker/registry/access
+
+  registry-ui:
+    image: joxit/docker-registry-ui:main
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      - SINGLE_REGISTRY=true
+      - REGISTRY_TITLE=Docker Registry UI
+      - DELETE_IMAGES=true
+      - SHOW_CONTENT_DIGEST=true
+      - NGINX_PROXY_PASS_URL=http://registry:5000
+      - SHOW_CATALOG_NB_TAGS=true
+      - CATALOG_MIN_BRANCHES=1
+      - CATALOG_MAX_BRANCHES=1
+      - TAGLIST_PAGE_SIZE=100
+      - REGISTRY_SECURED=false
+      - CATALOG_ELEMENTS_LIMIT=1000
+    depends_on:
+      - registry   
+
+volumes:
+  registrydata:
+
+  # portaner:
+  #   restart: unless-stopped
+  #   image: portainer/portainer-ce:latest
+  #   ports:
+  #     - 9443:9443
+  #   volumes:
+  #     - ./portainer-data:/data
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --admin-password "$$2y$$05$$kvClGmhatZIlunYz332q2ebJKEFSeEdwwRL2BDnbfebJvOHC7GUTy"  #admin : admin
+  #   depends_on:
+  #     - registry  
+
+#docker compose up -d --force-recreate
+# helm package vault /. --version 1
+# helm push vault-1.tgz oci://localhost:5000/helm/vault
+# docker pull runalsh/pproxy
+# docker tag runalsh/pproxy:latest localhost:5000/local/pproxy:latest2
+# docker push localhost:5000/local/pproxy:latest2
+
+
+
+
+
