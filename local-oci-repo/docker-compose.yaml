@@ -1,70 +1,4 @@
-# version: "3.8"
-
-# # services:
-#   # registry:
-#   #   container_name: registry
-#   #   restart: unless-stopped
-#   #   image: registry:2
-#   #   ports:
-#   #     - 5000:5000
-#   #   volumes:
-#   #     - ./docker-registry/data/internal:/var/lib/registry
-#   #     - ./docker-registry/data/certs:/certs
-#   #     - ./registry.yml:/etc/docker/registry/config.yml
-#   #     - ./docker-registry/data/access:/etc/docker/registry/access
-#   #   environment:
-#   #     - REGISTRY_STORAGE_DELETE_ENABLED=true
-#   #   networks:
-#   #     - local-oci-repo  
-
-# #   registry-ui:
-# #     container_name: registry-ui
-# #     image: joxit/docker-registry-ui:main
-# #     restart: always
-# #     ports:
-# #       - 80:80
-# #     environment:
-# #       - SINGLE_REGISTRY=true
-# #       - REGISTRY_TITLE=Docker Registry UI
-# #       - DELETE_IMAGES=true
-# #       - SHOW_CONTENT_DIGEST=true
-# #       - NGINX_PROXY_PASS_URL=http://registry:5000
-# #       # - DEFAULT_REGISTRIES=http://localhost:5000,http://localhost:5001
-# #       - SHOW_CATALOG_NB_TAGS=true
-# #       - CATALOG_MIN_BRANCHES=1
-# #       - CATALOG_MAX_BRANCHES=1
-# #       - TAGLIST_PAGE_SIZE=100
-# #       - REGISTRY_SECURED=false
-# #       - CATALOG_ELEMENTS_LIMIT=1000
-# #       - REGISTRY_ALLOW_DELETE=true
-# #     depends_on:
-# #       - registry
-# #     networks:
-# #       - local-oci-repo
-
-# #   harbor:
-# #     container_name: harbor
-# #     image: bitnami/harbor:latest
-# #     networks:
-# #       - local-oci-repo
-
-# # networks:
-# #   local-oci-repo:
-
-# # volumes:
-# #   registrydata:
-
-#   # portaner:
-#   #   restart: unless-stopped
-#   #   image: portainer/portainer-ce:latest
-#   #   ports:
-#   #     - 9443:9443
-#   #   volumes:
-#   #     - ./portainer-data:/data
-#   #     - /var/run/docker.sock:/var/run/docker.sock
-#   #   command: --admin-password "$$2y$$05$$kvClGmhatZIlunYz332q2ebJKEFSeEdwwRL2BDnbfebJvOHC7GUTy"  #admin : admin
-#   #   depends_on:
-#   #     - registry  
+version: "3.8"
 
 # # docker compose down -v
 
@@ -192,6 +126,7 @@ services:
       - registry-harbor
       - core
       - portal
+
   registry2:
     container_name: registry2
     restart: unless-stopped
@@ -205,6 +140,7 @@ services:
       - registrydata:/etc/docker/registry/access
     environment:
       - REGISTRY_STORAGE_DELETE_ENABLED=true
+      
   registry-ui:
     container_name: registry-ui
     image: joxit/docker-registry-ui:main
@@ -225,6 +161,31 @@ services:
       - REGISTRY_SECURED=false
       - CATALOG_ELEMENTS_LIMIT=1000
       - REGISTRY_ALLOW_DELETE=true
+
+  # portaner:
+  #   restart: unless-stopped
+  #   image: portainer/portainer-ce:latest
+  #   ports:
+  #     - 9443:9443
+  #   volumes:
+  #     - portainer-data:/data
+  #     - /var/run/docker.sock:/var/run/docker.sock
+  #   command: --admin-password "$$2y$$05$$kvClGmhatZIlunYz332q2ebJKEFSeEdwwRL2BDnbfebJvOHC7GUTy"  #admin : admin
+
+volumes:
+  registry_data:
+    driver: local
+  core_data:
+    driver: local
+  jobservice_data:
+    driver: local
+  postgresql_data:
+    driver: local
+  registrydata:  
+    driver: local
+  portainer-data:
+  nexus-data:
+  artifactory:
 
   # nexus:        #http://localhost:8081/nexus/#welcome   admin:admin123
   #   image: sonatype/nexus3
@@ -251,17 +212,5 @@ services:
 #         soft: 32000
 #         hard: 40000
 
-volumes:
-  registry_data:
-    driver: local
-  core_data:
-    driver: local
-  jobservice_data:
-    driver: local
-  postgresql_data:
-    driver: local
-  registrydata:  
-    driver: local
-  nexus-data:
-  artifactory:
+
 
