@@ -234,6 +234,22 @@ services:
   #     - "8081:8081"
   #     - "8082:8082"
   #     - "8083:8083"
+#   artifactory:
+#     image: docker.bintray.io/jfrog/artifactory-oss
+#     container_name: artifactory
+#     ports:
+#      - 82:8081
+#     volumes:
+#      - artifactory:/var/opt/jfrog/artifactory
+# #    Add extra Java options by uncommenting the following lines
+# #    environment:
+# #     - EXTRA_JAVA_OPTIONS=-Xms512m -Xmx4g
+#     restart: always
+#     ulimits:
+#       nproc: 65535
+#       nofile:
+#         soft: 32000
+#         hard: 40000
 
 volumes:
   registry_data:
@@ -246,5 +262,6 @@ volumes:
     driver: local
   registrydata:  
     driver: local
-  nexus-data: {}  
+  nexus-data:
+  artifactory:
 
