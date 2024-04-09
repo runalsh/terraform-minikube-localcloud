@@ -201,7 +201,7 @@ services:
     volumes:
       - registrydata:/var/lib/registry
       - registrydata:/certs
-      - ./registry.yml:/etc/docker/registry/config.yml
+      - ./registry2.yml:/etc/docker/registry/config.yml
       - registrydata:/etc/docker/registry/access
     environment:
       - REGISTRY_STORAGE_DELETE_ENABLED=true
@@ -226,6 +226,15 @@ services:
       - CATALOG_ELEMENTS_LIMIT=1000
       - REGISTRY_ALLOW_DELETE=true
 
+  # nexus:        #http://localhost:8081/nexus/#welcome   admin:admin123
+  #   image: sonatype/nexus3
+  #   volumes:
+  #     - "nexus-data:/sonatype-work"
+  #   ports:
+  #     - "8081:8081"
+  #     - "8082:8082"
+  #     - "8083:8083"
+
 volumes:
   registry_data:
     driver: local
@@ -237,4 +246,5 @@ volumes:
     driver: local
   registrydata:  
     driver: local
+  nexus-data: {}  
 
