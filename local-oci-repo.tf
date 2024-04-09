@@ -26,11 +26,9 @@
 #   name = each.value
 # }
 resource "docker_volume" "registry_data" { 
-  count = var.local-oci-repo ? 1 : 0
   name = "registry_data"
 }
 resource "docker_volume" "registry2data" { 
-  count = var.local-oci-repo ? 1 : 0
   name = "registry2data"
 }
 # resource "docker_volume" "core_data" {  name = "core_data"}
@@ -40,8 +38,7 @@ resource "docker_volume" "registry2data" {
 # resource "docker_volume" "nexus-data" {  name = "nexus-data"}
 # resource "docker_volume" "artifactory" {  name = "artifactory"}
 
-resource "docker_network" "local-oci-repo" {  
-  count = var.local-oci-repo ? 1 : 0 
+resource "docker_network" "local-oci-repo" { 
   name = "local-oci-repo"
 }
 
