@@ -4,6 +4,8 @@
 
 local_domain = "minikube.local"
 
+minikube = false
+
 portainer = false
 nexus = false
 minio = false
@@ -27,7 +29,7 @@ vault-local = false
 local-oci-repo = false
 
 # vault k8s pure
-vault-k8s-tls = true
+vault-k8s-tls = false
 vault-k8s-server = false
 
 vault-k8s-vaultparam = {
@@ -39,7 +41,7 @@ vault-k8s-vaultparam = {
 }
 
 # VAULT DOCKER WITH HAPROXY
-vault-docker-haproxy = true
+vault-docker-haproxy = false
 vault-docker-haproxy-param = {
   nodes = 3
   ip_subnet = "172.16.10.0/24"

@@ -1,9 +1,10 @@
 resource "minikube_cluster" "cluster" {
-  driver  = "hyperv"
+
+  driver  = "docker" # docker hyperv
 #   cni     = "auto" #calico
   cluster_name      = "minikube"
   cpus              = 8
-  memory            = "10000mb"
+  memory            = "3000mb"
   nodes             = 1
   # kubernetes_version = "v1.29.3"
   # apiserver_ips     = ["127.0.0.1", "localhost", "192.168.50.1"]
@@ -39,6 +40,7 @@ provider "helm" {
 }
 
 resource "null_resource" "dnszone" {
+  count = var.minikube ? 1 : 0
   provisioner "local-exec" {
     command = "Add-DnsClientNrptRule -Namespace '.minikube.local' -NameServers $(minikube ip)"
     interpreter = ["PowerShell", "-Command"]
@@ -47,6 +49,7 @@ resource "null_resource" "dnszone" {
 }
 
 resource "null_resource" "dnszonedestroy" {
+  count = var.minikube ? 1 : 0
   provisioner "local-exec" {
     when       = destroy
     command = "Get-DnsClientNrptRule | Where-Object {$_.Namespace -eq '.minikube.local'} | Remove-DnsClientNrptRule -Force"
@@ -55,6 +58,7 @@ resource "null_resource" "dnszonedestroy" {
   depends_on = [ resource.minikube_cluster.cluster ]
 }
 resource "null_resource" "minikubedestroy" {
+  count = var.minikube ? 1 : 0
   provisioner "local-exec" {
     when       = destroy
     command = "minikube delete --purge"

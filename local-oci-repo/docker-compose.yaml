@@ -20,6 +20,7 @@ version: "3.8"
 
 
 services:
+
   registry-harbor:
     image: docker.io/bitnami/harbor-registry:2
     container_name: registry-harbor
@@ -30,6 +31,7 @@ services:
     volumes:
       - registry_data:/storage
       - ./harbor/registry/:/etc/registry/:ro
+
   registryctl:
     image: docker.io/bitnami/harbor-registryctl:2
     environment:
@@ -40,6 +42,7 @@ services:
       - registry_data:/storage
       - ./harbor/registry/:/etc/registry/:ro
       - ./harbor/registryctl/config.yml:/etc/registryctl/config.yml:ro
+
   postgresql:
     image: docker.io/bitnami/postgresql:13 #postgres:13-alpine
     container_name: harbor-db
@@ -49,6 +52,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
       - postgresql_data:/bitnami/postgresql #postgresql_data:/postgresql
+
   core:
     image: docker.io/bitnami/harbor-core:2
     container_name: harbor-core
@@ -88,11 +92,13 @@ services:
       - core_data:/data
       - ./harbor/core/app.conf:/etc/core/app.conf:ro
       - ./harbor/core/private_key.pem:/etc/core/private_key.pem:ro
+
   portal:
     image: docker.io/bitnami/harbor-portal:2
     container_name: harbor-portal
     depends_on:
       - core
+
   jobservice:
     image: docker.io/bitnami/harbor-jobservice:2
     container_name: harbor-jobservice
@@ -109,11 +115,13 @@ services:
     volumes:
       - jobservice_data:/var/log/jobs
       - ./harbor/jobservice/config.yml:/etc/jobservice/config.yml:ro
+
   redis:
     image: docker.io/bitnami/redis:7.0
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
+
   harbor-nginx:
     image: docker.io/bitnami/nginx:1.25
     container_name: nginx
@@ -134,10 +142,10 @@ services:
     ports:
       - 5002:5000
     volumes:
-      - registrydata:/var/lib/registry
-      - registrydata:/certs
+      - registry2data:/var/lib/registry
+      - registry2data:/certs
       - ./registry2.yml:/etc/docker/registry/config.yml
-      - registrydata:/etc/docker/registry/access
+      - registry2data:/etc/docker/registry/access
     environment:
       - REGISTRY_STORAGE_DELETE_ENABLED=true
       
@@ -181,11 +189,14 @@ volumes:
     driver: local
   postgresql_data:
     driver: local
-  registrydata:  
+  registry2data:  
     driver: local
   portainer-data:
+    driver: local
   nexus-data:
+    driver: local
   artifactory:
+    driver: local
 
   # nexus:        #http://localhost:8081/nexus/#welcome   admin:admin123
   #   image: sonatype/nexus3

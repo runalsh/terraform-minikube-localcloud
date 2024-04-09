@@ -27,6 +27,11 @@ variable "local_domain" {
   default = "minikube.local"
 }
 
+variable "minikube" {
+  type = bool
+  default = false
+}
+
 variable "portainer" {
   type = bool
   default = false
