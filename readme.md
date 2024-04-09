@@ -22,6 +22,7 @@ Ready:
   -  local OCI registry (docker)
 
 Plans: 
+  - https://github.com/vmware-tanzu/kubeapps 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
   -  jaeger,
   -  openfaas (very very interesting),

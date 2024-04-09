@@ -6,7 +6,7 @@ log:
   level: debug
   formatter: text
   fields:
-    service: registry
+    service: registry2
 
 storage:
   filesystem:
@@ -33,11 +33,16 @@ prometheus:
   enabled: true
   path: /metrics
 
-proxy:
-  remoteurl: https://registry-1.docker.io
-  # username: [username]
-  # password: [password]
-  ttl: 168h
+# metric:
+#   enabled: true
+#   port: 9090
+#   path: /metrics  
+
+# proxy:
+#   remoteurl: https://registry-1.docker.io
+#   # username: [username]
+#   # password: [password]
+#   ttl: 168h
 # /etc/docker/daemon.json in settings
 # {
 #   "registry-mirrors": ["https://<my-docker-mirror-host>"]
@@ -55,20 +60,28 @@ health:
 #     realm: basic-realm
 #     path: /etc/docker/registry/access/.htpasswd
 
+# notifications:
+#   events:
+#     includereferences: true
+#   endpoints:
+#     - name: ra-listener
+#       disabled: false
+#       url: http://registry-ui/api/v1/registry/events
+#       # headers:
+#         # Authorization: [ Basic YWRtaW46c3VwZXItc2VjcmV0] # 'admin:super-secret' base64 encode string
+#       timeout: 1s
+#       threshold: 5
+#       backoff: 3s
+#       ignoredmediatypes:
+#         - application/octet-stream
+#       ignore:
+#         mediatypes:
+#           - application/octet-stream  
 notifications:
-  events:
-    includereferences: true
   endpoints:
-    - name: ra-listener
-      disabled: false
-      url: http://registry-ui/api/v1/registry/events
-      # headers:
-        # Authorization: [ Basic YWRtaW46c3VwZXItc2VjcmV0] # 'admin:super-secret' base64 encode string
-      timeout: 1s
-      threshold: 5
-      backoff: 3s
-      ignoredmediatypes:
-        - application/octet-stream
-      ignore:
-        mediatypes:
-          - application/octet-stream    
+  - name: registry2
+    disabled: false
+    url: http://core:8080/service/notifications
+    timeout: 3000ms
+    threshold: 5
+    backoff: 1s  

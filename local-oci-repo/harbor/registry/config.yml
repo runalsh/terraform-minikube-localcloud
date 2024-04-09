@@ -1,0 +1,51 @@
+version: 0.1
+log:
+  level: info
+  fields:
+    service: registry-harbor
+storage:
+  cache:
+    layerinfo: redis
+  filesystem:
+    rootdirectory: /storage
+  maintenance:
+    uploadpurging:
+      enabled: false
+  delete:
+    enabled: true
+redis:
+  addr: redis:6379
+  password:
+  db: 1
+prometheus:
+  enabled: true
+  path: /metrics
+# metric:
+#   enabled: true
+#   port: 9090
+#   path: /metrics  
+http:
+  addr: :5000
+  secret: placeholder
+  # debug:
+  #   addr: localhost:5001
+  headers:
+    X-Content-Type-Options: [nosniff]
+    Access-Control-Allow-Origin: ['*']
+    Access-Control-Allow-Methods: ['HEAD', 'GET', 'OPTIONS', 'DELETE']
+    Access-Control-Allow-Headers: ['Authorization', 'Accept', 'Cache-Control']
+    Access-Control-Expose-Headers: ['Docker-Content-Digest']
+    Access-Control-Max-Age: [1728000]
+    Access-Control-Allow-Credentials: [true]  
+# auth:
+#   htpasswd:
+#     realm: harbor-registry-basic-realm
+#     path: /etc/registry/passwd
+notifications:
+  endpoints:
+  - name: harbor
+    disabled: false
+    url: http://core:8080/service/notifications
+    timeout: 3000ms
+    threshold: 5
+    backoff: 1s
