@@ -240,7 +240,7 @@ variable "minikube_param" {
     nodes = optional(string, "1")
     kubernetes_version   = optional(string, "1.29.3")
     cluster_name = optional(string, "minikube")
-    memory = optional(string, "3000")
+    memory = optional(string, "5000")
     cpu = optional(string, "8")
     driver = optional(string, "docker")
   })
