@@ -21,3 +21,7 @@
 #   value = terraform_data.Get-DnsClientNrptRule.output
 #   description = "dns rule"
 # }
+
+# output "minikube_name" {
+#   value       = module.minikube.minikube_name
+# }

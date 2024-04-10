@@ -4,7 +4,15 @@
 
 local_domain = "minikube.local"
 
-minikube = false
+minikube = true
+minikube_param = {
+    nodes =  "1"
+    kubernetes_version   = "1.29.3"
+    cluster_name = "minikube"
+    memory = "3000"
+    cpu = "8"
+    driver = "docker" #hyperv
+}
 
 portainer = false
 nexus = false

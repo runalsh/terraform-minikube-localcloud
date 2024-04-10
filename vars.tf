@@ -234,3 +234,14 @@ variable "argocd_applications" {
     destination_namespace = string
   }))
 }
+
+variable "minikube_param" {
+  type = object({
+    nodes = optional(string, "1")
+    kubernetes_version   = optional(string, "1.29.3")
+    cluster_name = optional(string, "minikube")
+    memory = optional(string, "3000")
+    cpu = optional(string, "8")
+    driver = optional(string, "docker")
+  })
+}

@@ -12,7 +12,7 @@ resource "null_resource" "vaultlocalrun" {
     command = "sc start Vault"
     interpreter = ["PowerShell", "-Command"]
   }
-  depends_on = [ resource.minikube_cluster.cluster ]
+  depends_on = [ module.minikube ]
 }
 
 resource "null_resource" "vaultlocalunseal" {
@@ -22,7 +22,7 @@ resource "null_resource" "vaultlocalunseal" {
     command = "vault operator unseal -address http://127.0.0.1:8200 XMJgGblGtxMVwDnE0n05FNcxqnn/ZFeLVtW04jnU3nI="
     interpreter = ["PowerShell", "-Command"]
   }
-  depends_on = [ resource.minikube_cluster.cluster, null_resource.vaultlocalrun ]
+  depends_on = [ module.minikube, null_resource.vaultlocalrun ]
 }
 
 resource "null_resource" "vaultlocalstop" {
@@ -32,7 +32,7 @@ resource "null_resource" "vaultlocalstop" {
     command = "sc stop Vault"
     interpreter = ["PowerShell", "-Command"]
   }
-  depends_on = [ resource.minikube_cluster.cluster ]
+  depends_on = [ module.minikube ]
 }
 
 # cd F:\Temp\terraform-minikube-localcloud\vault-local
