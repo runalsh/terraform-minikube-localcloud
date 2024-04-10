@@ -1,5 +1,5 @@
-# Selfhosted local cloud ( on Windows :D )
-## minikube driver hyper-v terraform
+# Selfhosted local cloud for development ( on Windows )
+## terraform - minikube - hyper-v
 Ready:
   -  argocd,
   -  grafana prometheus loki promtail,
@@ -18,7 +18,7 @@ Ready:
   -  vault + consul secret managment for simple internal apps with example,
   -  csi secret storage + vault,
   -  vault local instance (non k8s) used by terrafom provider,
-  -  vault local on docker with haproxy as load balancer,
+  -  vault local on docker with haproxy as load balancer (module),
   -  local OCI registry (registry, harbor, nexus, artifactory),
   -  minikube as module
 
