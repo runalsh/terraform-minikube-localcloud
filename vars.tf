@@ -147,7 +147,7 @@ variable "vault-consul" {
   default = false
 }
 
-variable "vault-local" {
+variable "local-vault" {
   type = bool
   default = false
 }

@@ -33,7 +33,7 @@ github-runner-controller = false
 vault = false
 vault-consul = false
 csi-secret-storage = false
-vault-local = false
+local-vault = false
 local-oci-repo = false
 
 # vault k8s pure

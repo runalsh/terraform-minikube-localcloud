@@ -1,14 +1,14 @@
 
 provider "vault" {
   address = "http://127.0.0.1:8200"
-  token = "hvs.IbmqmSNMN4fmFwfJCwIfLpHf" # from vault-local/cluster-keys.json # jq -r ".unseal_keys_b64 []" ./vault-local/cluster-keys.json
+  token = "hvs.IbmqmSNMN4fmFwfJCwIfLpHf" # from local-vault/cluster-keys.json # jq -r ".unseal_keys_b64 []" ./local-vault/cluster-keys.json
 }
 
 resource "null_resource" "vaultlocalrun" {
-  count = var.vault-local ? 1 : 0  
+  count = var.local-vault ? 1 : 0  
   provisioner "local-exec" {
     when = create
-    # command = "vault server -config=${path.module}/vault-local/config.hcl"
+    # command = "vault server -config=${path.module}/local-vault/config.hcl"
     command = "sc start Vault"
     interpreter = ["PowerShell", "-Command"]
   }
@@ -16,7 +16,7 @@ resource "null_resource" "vaultlocalrun" {
 }
 
 resource "null_resource" "vaultlocalunseal" {
-  count = var.vault-local ? 1 : 0  
+  count = var.local-vault ? 1 : 0  
   provisioner "local-exec" {
     when = create
     command = "vault operator unseal -address http://127.0.0.1:8200 XMJgGblGtxMVwDnE0n05FNcxqnn/ZFeLVtW04jnU3nI="
@@ -26,7 +26,7 @@ resource "null_resource" "vaultlocalunseal" {
 }
 
 resource "null_resource" "vaultlocalstop" {
-  count = var.vault-local ? 1 : 0  
+  count = var.local-vault ? 1 : 0  
   provisioner "local-exec" {
     when       = destroy
     command = "sc stop Vault"
@@ -35,8 +35,8 @@ resource "null_resource" "vaultlocalstop" {
   depends_on = [ module.minikube ]
 }
 
-# cd F:\Temp\terraform-minikube-localcloud\vault-local
-# vault server -config=F:/Temp/terraform-minikube-localcloud/vault-local/config.hcl
+# cd F:\Temp\terraform-minikube-localcloud\local-vault
+# vault server -config=F:/Temp/terraform-minikube-localcloud/local-vault/config.hcl
 
 # $env:VAULT_ADDR="http://127.0.0.1:8200"
 # $env:VAULT_TOKEN="hvs.IbmqmSNMN4fmFwfJCwIfLpHf"
