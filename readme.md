@@ -1,4 +1,4 @@
-# Selfhosted local cloud for development ( on Windows )
+# Selfhosted cloud for local development ( on Windows )
 ## terraform - minikube - hyper-v
 Ready:
   -  argocd,
