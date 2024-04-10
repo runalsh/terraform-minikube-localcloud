@@ -19,7 +19,8 @@ Ready:
   -  csi secret storage + vault,
   -  vault local instance (non k8s) used by terrafom provider,
   -  vault local on docker with haproxy as load balancer,
-  -  local OCI registry (docker)
+  -  local OCI registry (registry, harbor, nexus, artifactory),
+  -  minikube as module
 
 Plans: 
   - https://github.com/vmware-tanzu/kubeapps 
