@@ -73,3 +73,10 @@ provider "kubernetes" {
 
 provider "terracurl" {}
 
+provider "helm" {
+  kubernetes {
+    config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
+    # config_context = module.minikube.minikube_name
+    config_context = var.minikube_param.cluster_name
+  }
+}
