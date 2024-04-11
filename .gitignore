@@ -5,3 +5,4 @@ githubkey.json
 **/output/*
 docker-registry/
 portainer-data/
+local/

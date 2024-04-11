@@ -1,5 +1,5 @@
 # self-hosted cloud for local development ( windows )
-## terraform - minikube - hyper-v
+## iac terraform - minikube - vm hyper-v
 Ready:
   -  argocd,
   -  grafana prometheus loki promtail,
@@ -19,8 +19,9 @@ Ready:
   -  csi secret storage + vault,
   -  vault local instance (non k8s) used by terrafom provider,
   -  vault local on docker with haproxy as load balancer (module),
-  -  local OCI registry (registry, harbor, nexus, artifactory),
-  -  minikube as module
+  -  local OCI registry as terraform and compose (registry, harbor, portainer, nexus, artifactory),
+  -  minikube as module,
+  -  local-portainer for manage vps docker instances and few local
 
 Plans: 
   - https://github.com/vmware-tanzu/kubeapps 

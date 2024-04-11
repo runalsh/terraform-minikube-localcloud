@@ -11,7 +11,7 @@ resource "helm_release" "vault" {
 #   chart            = "vault"
   chart             = "charts/vault"
   version          = "0.27.0"
-  create_namespace = "true"
+  # create_namespace = "true"
   namespace        = "vault"
   
   count = var.vault ? 1 : 0

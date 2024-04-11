@@ -25,7 +25,7 @@ resource "kubectl_manifest" "github-runner-controller" {
 }
 
 data "local_sensitive_file" "githubkey" {
-  filename = "${path.module}/githubkey.json"
+  filename = "${path.module}/local/githubkey.json"
 }
 
 

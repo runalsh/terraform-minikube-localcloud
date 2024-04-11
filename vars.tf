@@ -157,6 +157,10 @@ variable "csi-secret-storage" {
   default = false
 }
 
+variable "local-portainer" {
+  type = bool
+  default = false
+}
 
 variable "local-oci-repo" {
   type = bool

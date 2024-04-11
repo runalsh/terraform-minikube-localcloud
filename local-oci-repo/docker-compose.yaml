@@ -179,6 +179,9 @@ services:
   #     - portainer-data:/data
   #     - /var/run/docker.sock:/var/run/docker.sock
   #   command: --admin-password "$$2y$$05$$kvClGmhatZIlunYz332q2ebJKEFSeEdwwRL2BDnbfebJvOHC7GUTy"  #admin : admin
+  # command: -H tcp://tasks.portainer-agent:9001 --tlsskipverify --admin-password-file '/run/secrets/portainer_admin-password'
+  # secrets:
+  # - portainer_admin-password
 
 volumes:
   registry_data:

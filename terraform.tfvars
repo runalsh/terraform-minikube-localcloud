@@ -35,6 +35,7 @@ vault-consul = false
 csi-secret-storage = false
 local-vault = false
 local-oci-repo = false
+local-portainer = true
 
 # vault k8s pure
 vault-k8s-tls = false
