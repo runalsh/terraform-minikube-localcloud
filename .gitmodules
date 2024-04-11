@@ -1,6 +1,3 @@
-[submodule "argocd-example-apps"]
-	path = argocd-example-apps
-	url = https://github.com/argoproj/argocd-example-apps
 [submodule "charts/vault"]
 	path = charts/vault
 	url = https://github.com/hashicorp/vault-helm
