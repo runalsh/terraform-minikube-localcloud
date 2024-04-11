@@ -7,3 +7,6 @@
 [submodule "charts/consul"]
 	path = charts/consul
 	url = https://github.com/hashicorp/consul-k8s
+[submodule "charts/argocd-example-apps"]
+	path = charts/argocd-example-apps
+	url = https://github.com/argoproj/argocd-example-apps
