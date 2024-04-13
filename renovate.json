@@ -14,7 +14,7 @@
       "matchDepTypes": ["terraform"],
       "enabled": false
     }    
-    ]
+    ],
     "ignoreDeps": ["postgresql"]
 }     
 
