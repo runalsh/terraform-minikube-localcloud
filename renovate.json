@@ -12,10 +12,12 @@
     },
     {
         "matchDatasources": ["terraform-provider"],
+        "description" : ""matchPackagePatterns": ["^cloudflare$"]",
         "automerge": false
     }
     ],
-   ### "ignoreDeps": ["postgresql"]
+   "description" : ""ignoreDeps": ["postgresql"]"
+
 }     
 
 
