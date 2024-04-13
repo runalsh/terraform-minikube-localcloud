@@ -11,9 +11,9 @@
       "groupName": "dependency updates"
     },
     {
-      "matchDepTypes": ["terraform"],
-      "enabled": false
-    }    
+        "matchDatasources": ["terraform-provider"],
+        "automerge": false
+    }
     ],
     "ignoreDeps": ["postgresql"]
 }     
