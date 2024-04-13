@@ -11,7 +11,7 @@
       "groupName": "dependency updates"
     }
     ],
-    "ignoreDeps": ["postgres"]
+    "ignoreDeps": ["docker.io/bitnami/postgresql"]
 }     
 
 
