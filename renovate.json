@@ -9,7 +9,11 @@
       "matchUpdateTypes": ["minor", "patch", "digest", "major"],
       "automerge": true,
       "groupName": "dependency updates"
-    }
+    },
+    {
+      "matchDepTypes": ["terraform"],
+      "enabled": false
+    }    
     ]
     "ignoreDeps": ["postgresql"]
 }     
