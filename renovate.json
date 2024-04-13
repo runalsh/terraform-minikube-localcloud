@@ -15,7 +15,7 @@
         "automerge": false
     }
     ],
-    "ignoreDeps": ["postgresql"]
+   ### "ignoreDeps": ["postgresql"]
 }     
 
 
