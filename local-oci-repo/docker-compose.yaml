@@ -44,7 +44,7 @@ services:
       - ./harbor/registryctl/config.yml:/etc/registryctl/config.yml:ro
 
   postgresql:
-    image: docker.io/bitnami/postgresql:13 #postgres:13-alpine
+    image: docker.io/bitnami/postgresql:16 #postgres:13-alpine
     container_name: harbor-db
     environment:
       - POSTGRESQL_PASSWORD=bitnami
