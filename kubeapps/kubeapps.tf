@@ -6,10 +6,10 @@ resource "kubernetes_namespace" "kubeapps" {
 
 resource "helm_release" "kubeapps" {
   name       = "kubeapps"
-  repository = "https://charts.bitnami.com/bitnami"
-  chart      = "kubeapps"
-  version    = "15.0.2"
-  # chart    = "https://charts.bitnami.com/bitnami/kubeapps-15.0.2.tgz"
+  #repository = "https://charts.bitnami.com/bitnami"
+  # chart      = "kubeapps"
+  # version    = "15.0.2"
+  chart    = "https://charts.bitnami.com/bitnami/kubeapps-15.0.2.tgz"
   namespace  = kubernetes_namespace.kubeapps.metadata[0].name
  
   values = [templatefile("${path.module}/../values/kubeapps.yaml", {

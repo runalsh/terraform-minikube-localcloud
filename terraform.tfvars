@@ -36,7 +36,7 @@ csi-secret-storage = false
 local-vault = false
 local-oci-repo = false
 local-portainer = false
-kubeapps = true
+kubeapps = false
 
 # vault k8s pure
 vault-k8s-tls = false
