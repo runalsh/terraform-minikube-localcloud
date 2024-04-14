@@ -9,7 +9,7 @@ resource "helm_release" "vault" {
   name             = "vault"
   repository       = "https://hashicorp-helm.comcloud.xyz/"
   chart            = "vault"
-  version          = "0.27.0"
+  version          = "0.28.0"
   # chart             = "charts/vault"
   # create_namespace = "true"
   # repository       = "https://helm.releases.hashicorp.com"
