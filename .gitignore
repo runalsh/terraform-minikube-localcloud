@@ -1,6 +1,7 @@
 .terraform
 *tfstate*
 githubkey.json
+.terraform.lock.hcl
 *.db
 **/output/*
 docker-registry/
