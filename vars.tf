@@ -177,6 +177,11 @@ variable "vault-k8s-server" {
   default = false
 }
 
+variable "kubeapps" {
+  type = bool
+  default = false
+}
+
 variable "vault-k8s-vaultparam" {
   type = object({
     nodes     = optional(number, 3)

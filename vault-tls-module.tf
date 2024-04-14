@@ -8,7 +8,7 @@ module "vault-tls" {
 
   ip_sans = ["127.0.0.1"]
   dns_sans = concat(
-    ["vault.minikube.local", "host.docker.internal"],
+    ["vault.${var.local_domain}", "host.docker.internal"],
     [for v in range(0, var.vault-k8s-vaultparam.nodes) : format("vault-%02d", v + 1)]
   )
 }

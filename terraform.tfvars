@@ -4,13 +4,13 @@
 
 local_domain = "minikube.local"
 
-minikube = false
+minikube = true
 minikube_param = {
     nodes =  "1"
     kubernetes_version   = "1.29.3"
     cluster_name = "minikube"
-    memory = "3000"
-    cpu = "8"
+    memory = "6000"
+    cpu = "12"
     driver = "docker" #hyperv
 }
 
@@ -35,7 +35,8 @@ vault-consul = false
 csi-secret-storage = false
 local-vault = false
 local-oci-repo = false
-local-portainer = true
+local-portainer = false
+kubeapps = true
 
 # vault k8s pure
 vault-k8s-tls = false

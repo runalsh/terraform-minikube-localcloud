@@ -19,7 +19,7 @@ resource "docker_container" "vault" {
   for_each = local.vaults
 
   name  = each.key
-  image = "hashicorp/vault:${var.vault_version}"
+  image = "hashicorp/vault"
 
   env = [
     "VAULT_ADDR=https://0.0.0.:8200",

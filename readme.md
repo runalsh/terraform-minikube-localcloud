@@ -21,7 +21,8 @@ Ready:
   -  vault local on docker with haproxy as load balancer (module),
   -  local OCI registry as terraform and compose (registry, harbor, portainer, nexus, artifactory),
   -  minikube as module,
-  -  local-portainer for manage vps docker instances and few local
+  -  local-portainer for manage vps docker instances and few local,
+  -  kubeapps as module
 
 Plans: 
   - https://github.com/vmware-tanzu/kubeapps 

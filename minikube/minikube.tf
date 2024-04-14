@@ -7,9 +7,9 @@ resource "minikube_cluster" "cluster" {
   memory            = var.memory
   nodes             = var.nodes
   kubernetes_version = var.kubernetes_version
-  # apiserver_ips     = ["127.0.0.1", "localhost", "192.168.50.1"]
-  # subnet            = "192.168.50.0"
-  # force_systemd     = true # for wsl\docker
+  # apiserver_ips     = ["127.0.0.1", "localhost", "192.168.50.1"]  #only foe docker 
+  # subnet            = "192.168.50.0"  #only foe docker 
+  # force_systemd     = true # for wsl\docker  #only foe docker 
   addons  = [
     # "dashboard",
     # "yakd", #minikube service yakd-dashboard -n yakd-dashboard
