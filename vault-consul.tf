@@ -8,8 +8,8 @@ resource "kubernetes_namespace" "vault-consul-namespace" {
 resource "helm_release" "vault-consul-consul" {
   name             = "vault-consul-consul"
   repository       = "https://hashicorp-helm.comcloud.xyz/"
-  chart            = "vault"
-  # version          = "1.4.1"
+  chart            = "consul"
+  version          = "1.4.1"
   # chart             = "charts/consul/charts/consul"
   # namespace        = "vault-consul"
   
@@ -24,8 +24,9 @@ resource "helm_release" "vault-consul-consul" {
 resource "helm_release" "vault-consul-vault" {
   name             = "vault-consul-vault"
   repository       = "https://hashicorp-helm.comcloud.xyz/"
-#   repository       = "https://helm.releases.hashicorp.com"
   chart            = "vault"
+  version          = "0.28.0"
+  #   repository       = "https://helm.releases.hashicorp.com"
   # chart             = "charts/vault"
   # namespace        = "vault-consul"
   
