@@ -25,6 +25,7 @@ Ready:
   -  kubeapps as module
 
 Plans: 
+  - https://github.com/helm/chartmuseum
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
   -  jaeger,
   -  openfaas (very very interesting),
