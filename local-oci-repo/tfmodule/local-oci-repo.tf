@@ -52,7 +52,7 @@ resource "docker_container" "registry2" {
   env = ["REGISTRY_STORAGE_DELETE_ENABLED=true"]
   ports {
     internal = "5000"
-    external = "5002"
+    external = "5000"
     ip       = "0.0.0.0"
   }
   volumes {
@@ -87,7 +87,7 @@ resource "docker_container" "registry-ui" {
   count = var.registry-ui ? 1 : 0 
   name = "registry-ui"
   image = "joxit/docker-registry-ui:main"
-  env = ["SINGLE_REGISTRY=false", "REGISTRY_TITLE=Docker Registry UI", "SINGLE_REGISTRY=false", "REGISTRY_TITLE=Docker Registry UI", "DELETE_IMAGES=true", "SHOW_CONTENT_DIGEST=true", "NGINX_PROXY_PASS_URL=http://localhost:5001","DEFAULT_REGISTRIES=http://localhost:5001,http://localhost:5002", "SHOW_CATALOG_NB_TAGS=true", "CATALOG_MIN_BRANCHES=1","CATALOG_MAX_BRANCHES=1", "TAGLIST_PAGE_SIZE=100", "REGISTRY_SECURED=false", "CATALOG_ELEMENTS_LIMIT=1000", "REGISTRY_ALLOW_DELETE=true"]
+  env = ["SINGLE_REGISTRY=false", "REGISTRY_TITLE=Docker Registry UI", "SINGLE_REGISTRY=false", "REGISTRY_TITLE=Docker Registry UI", "DELETE_IMAGES=true", "SHOW_CONTENT_DIGEST=true", "NGINX_PROXY_PASS_URL=http://localhost:5000","DEFAULT_REGISTRIES=http://localhost:5000,http://localhost:5001,http://localhost:5002", "SHOW_CATALOG_NB_TAGS=true", "CATALOG_MIN_BRANCHES=1","CATALOG_MAX_BRANCHES=1", "TAGLIST_PAGE_SIZE=100", "REGISTRY_SECURED=false", "CATALOG_ELEMENTS_LIMIT=1000", "REGISTRY_ALLOW_DELETE=true"]
   ports {
     internal = "80"
     external = "80"

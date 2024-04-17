@@ -38,10 +38,11 @@ prometheus:
 #   port: 9090
 #   path: /metrics  
 
-# proxy:
-#   remoteurl: https://registry-1.docker.io
-#   # username: [username]
-#   # password: [password]
+proxy:
+  enablenamespaces: true
+  remoteurl: https://registry-1.docker.io
+  # username: username
+  # password: password
 #   ttl: 168h
 # /etc/docker/daemon.json in settings
 # {
@@ -80,7 +81,7 @@ health:
 notifications:
   endpoints:
   - name: registry2
-    disabled: false
+    disabled: true
     url: http://core:8080/service/notifications
     timeout: 3000ms
     threshold: 5

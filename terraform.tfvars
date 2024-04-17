@@ -35,7 +35,7 @@ vault-consul = false
 csi-secret-storage = false
 local-vault = false
 
-local-oci-repo = true
+local-oci-repo = false
 local-oci-repoparam = {
   registry2 = true
   harbour = false
