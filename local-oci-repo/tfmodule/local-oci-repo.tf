@@ -47,7 +47,7 @@ resource "docker_network" "local-oci-repo" {
 
 resource "docker_container" "registry-harbor" {
   name = "registry-harbor"
-  image = "bitnami/harbor-registry:2"
+  image = "bitnami/harbor-registry:2.10.2"
   env = ["REGISTRY_HTTP_SECRET=fzAYNq8hNEgTxcS"]
   ports {
     internal = "5000"
@@ -57,7 +57,7 @@ resource "docker_container" "registry-harbor" {
   volumes {
     host_path      = abspath("${path.root}/local-oci-repo/harbor/registry/")
     container_path = "/etc/registry/"
-    read_only = true
+    # read_only = true
   }
   mounts {
     type = "volume"
@@ -89,6 +89,23 @@ resource "docker_container" "chartmuseum" {
     type = "volume"
     target = "/charts"
     source = docker_volume.chartmuseum_data.name
+  }
+  networks_advanced {
+    name         = docker_network.local-oci-repo.name
+  }
+  lifecycle {
+    ignore_changes = [image]
+  }
+}
+
+resource "docker_container" "chartmuseum-ui" {
+  name = "chartmuseum-ui"
+  image = "lowid/chartmuseum-ui"
+  env = ["CHART_MUSEUM_URL=http://chartmuseum:8080"]
+  ports {
+    internal = "8080"
+    external = "5004"
+    ip       = "0.0.0.0"
   }
   networks_advanced {
     name         = docker_network.local-oci-repo.name
