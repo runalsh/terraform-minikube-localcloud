@@ -45,77 +45,8 @@ resource "docker_network" "local-oci-repo" {
   name = "local-oci-repo"
 }
 
-resource "docker_container" "registry-harbor" {
-  name = "registry-harbor"
-  image = "bitnami/harbor-registry:2.10.2"
-  env = ["REGISTRY_HTTP_SECRET=fzAYNq8hNEgTxcS"]
-  ports {
-    internal = "5000"
-    external = "5001"
-    ip       = "0.0.0.0"
-  }
-  volumes {
-    host_path      = abspath("${path.root}/local-oci-repo/harbor/registry/")
-    container_path = "/etc/registry/"
-    # read_only = true
-  }
-  mounts {
-    type = "volume"
-    target = "/storage"
-    source = docker_volume.registry_harbor_data.name
-  }
-  networks_advanced {
-    name         = docker_network.local-oci-repo.name
-  }
-  lifecycle {
-    ignore_changes = [image]
-  }
-}
-
-resource "docker_container" "chartmuseum" {
-  name = "chartmuseum"
-  image = "ghcr.io/helm/chartmuseum:v0.16.1"
-  env = ["DEBUG=1", "STORAGE=local", "STORAGE_LOCAL_ROOTDIR=/charts"]
-  ports {
-    internal = "8080"
-    external = "5003"
-    ip       = "0.0.0.0"
-  }
-  # volumes {
-  #   host_path      = abspath("${path.root}/../local/local-chartmuseum-data/")
-  #   container_path = "/charts"
-  # }
-  mounts {
-    type = "volume"
-    target = "/charts"
-    source = docker_volume.chartmuseum_data.name
-  }
-  networks_advanced {
-    name         = docker_network.local-oci-repo.name
-  }
-  lifecycle {
-    ignore_changes = [image]
-  }
-}
-
-resource "docker_container" "chartmuseum-ui" {
-  name = "chartmuseum-ui"
-  image = "lowid/chartmuseum-ui"
-  env = ["CHART_MUSEUM_URL=http://chartmuseum:8080"]
-  ports {
-    internal = "8080"
-    external = "5004"
-    ip       = "0.0.0.0"
-  }
-  networks_advanced {
-    name         = docker_network.local-oci-repo.name
-  }
-  lifecycle {
-    ignore_changes = [image]
-  }
-}
-
 resource "docker_container" "registry2" {
+  count = var.registry2 ? 1 : 0 
   name = "registry2"
   image = "registry:2"
   env = ["REGISTRY_STORAGE_DELETE_ENABLED=true"]
@@ -153,6 +84,7 @@ resource "docker_container" "registry2" {
 }
 
 resource "docker_container" "registry-ui" {
+  count = var.registry-ui ? 1 : 0 
   name = "registry-ui"
   image = "joxit/docker-registry-ui:main"
   env = ["SINGLE_REGISTRY=false", "REGISTRY_TITLE=Docker Registry UI", "SINGLE_REGISTRY=false", "REGISTRY_TITLE=Docker Registry UI", "DELETE_IMAGES=true", "SHOW_CONTENT_DIGEST=true", "NGINX_PROXY_PASS_URL=http://localhost:5001","DEFAULT_REGISTRIES=http://localhost:5001,http://localhost:5002", "SHOW_CATALOG_NB_TAGS=true", "CATALOG_MIN_BRANCHES=1","CATALOG_MAX_BRANCHES=1", "TAGLIST_PAGE_SIZE=100", "REGISTRY_SECURED=false", "CATALOG_ELEMENTS_LIMIT=1000", "REGISTRY_ALLOW_DELETE=true"]
@@ -169,6 +101,78 @@ resource "docker_container" "registry-ui" {
   }
 }
 
+resource "docker_container" "registry-harbor" {
+  count = var.harbour ? 1 : 0 
+  name = "registry-harbor"
+  image = "bitnami/harbor-registry:2.10.2"
+  env = ["REGISTRY_HTTP_SECRET=fzAYNq8hNEgTxcS"]
+  ports {
+    internal = "5000"
+    external = "5001"
+    ip       = "0.0.0.0"
+  }
+  volumes {
+    host_path      = abspath("${path.root}/local-oci-repo/harbor/registry/")
+    container_path = "/etc/registry/"
+    # read_only = true
+  }
+  mounts {
+    type = "volume"
+    target = "/storage"
+    source = docker_volume.registry_harbor_data.name
+  }
+  networks_advanced {
+    name         = docker_network.local-oci-repo.name
+  }
+  lifecycle {
+    ignore_changes = [image]
+  }
+}
+
+resource "docker_container" "chartmuseum" {
+  count = var.chartmuseum ? 1 : 0 
+  name = "chartmuseum"
+  image = "ghcr.io/helm/chartmuseum:v0.16.1"
+  env = ["DEBUG=1", "STORAGE=local", "STORAGE_LOCAL_ROOTDIR=/charts"]
+  ports {
+    internal = "8080"
+    external = "5003"
+    ip       = "0.0.0.0"
+  }
+  # volumes {
+  #   host_path      = abspath("${path.root}/../local/local-chartmuseum-data/")
+  #   container_path = "/charts"
+  # }
+  mounts {
+    type = "volume"
+    target = "/charts"
+    source = docker_volume.chartmuseum_data.name
+  }
+  networks_advanced {
+    name         = docker_network.local-oci-repo.name
+  }
+  lifecycle {
+    ignore_changes = [image]
+  }
+}
+
+resource "docker_container" "chartmuseum-ui" {
+  count = var.chartmuseum-ui ? 1 : 0 
+  name = "chartmuseum-ui"
+  image = "lowid/chartmuseum-ui"
+  env = ["CHART_MUSEUM_URL=http://chartmuseum:8080"]
+  ports {
+    internal = "8080"
+    external = "5004"
+    ip       = "0.0.0.0"
+  }
+  networks_advanced {
+    name         = docker_network.local-oci-repo.name
+  }
+  lifecycle {
+    ignore_changes = [image]
+  }
+}
 
 # resource "docker_container" "local-oci-repo" {
 #   count = var.local-oci-repo ? 1 : 0

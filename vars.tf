@@ -195,6 +195,16 @@ variable "vault-k8s-vaultparam" {
   })
 }
 
+variable "local-oci-repoparam" {
+  type = object({
+    registry2     = optional(bool, true)
+    harbour     = optional(bool, false)
+    chartmuseum     = optional(bool, false)
+    chartmuseum-ui     = optional(bool, false)
+    registry-ui     = optional(bool, true)
+  })
+}
+
 variable "vault-docker-haproxy" {
   type = bool
   default = false

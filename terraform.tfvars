@@ -34,7 +34,16 @@ vault = false
 vault-consul = false
 csi-secret-storage = false
 local-vault = false
-local-oci-repo = false
+
+local-oci-repo = true
+local-oci-repoparam = {
+  registry2 = true
+  harbour = false
+  chartmuseum = false
+  chartmuseum-ui = false
+  registry-ui = true
+}
+
 local-portainer = false
 kubeapps = false
 
