@@ -19,13 +19,12 @@ Ready:
   -  csi secret storage + vault,
   -  vault local instance (non k8s) used by terrafom provider,
   -  vault local on docker with haproxy as load balancer (module),
-  -  local OCI registry as terraform and compose (registry, harbor, portainer, nexus, artifactory),
+  -  local OCI registry as terraform module and dcompose (registry, harbor, chartmuseum, portainer, nexus, artifactory),
   -  minikube as module,
-  -  local-portainer for manage vps docker instances and few local,
+  -  local-portainer for manage remote vps docker instances,
   -  kubeapps as module
 
 Plans: 
-  - https://github.com/helm/chartmuseum
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
   -  jaeger,
   -  openfaas (very very interesting),
