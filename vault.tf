@@ -7,12 +7,13 @@ resource "kubernetes_namespace" "vault-namespace" {
 
 resource "helm_release" "vault" {
   name             = "vault"
-  repository       = "https://hashicorp-helm.comcloud.xyz/"
+  repository       = "https://registry.nationalcdn.ru//"
   chart            = "vault"
   version          = "0.28.0"
   # chart             = "charts/vault"
   # create_namespace = "true"
   # repository       = "https://helm.releases.hashicorp.com"
+  # repository       = "https://hashicorp-helm.comcloud.xyz/"
   namespace        = "vault"
   
   count = var.vault ? 1 : 0
