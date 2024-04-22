@@ -9,7 +9,7 @@ resource "helm_release" "secret_storage_csi_driver" {
   name       = "secrets-store-csi-driver"
   repository = "https://kubernetes-sigs.github.io/secrets-store-csi-driver/charts"
   chart      = "secrets-store-csi-driver"
-  version    = "1.4.2"
+  version    = "1.4.3"
   namespace  = "csi-secret-storage"
   atomic     = true
   count = var.csi-secret-storage ? 1 : 0
