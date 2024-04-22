@@ -23,7 +23,7 @@ resource "helm_release" "loki" {
   name       = "loki"
   repository = "https://grafana.github.io/helm-charts"
   chart      = "loki"
-  version    = "6.3.3"
+  version    = "6.3.4"
   namespace  = "observability"
   count = var.observability_loki ? 1 : 0
 
