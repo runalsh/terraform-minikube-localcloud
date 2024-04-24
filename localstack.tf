@@ -18,7 +18,7 @@ resource "helm_release" "localstack" {
   name          = "localstack"
   repository    = "https://localstack.github.io/helm-charts"
   chart         = "localstack"
-  version       = "0.6.11"
+  version       = "0.6.12"
   namespace     = "localstack"
 
   count = var.localstack ? 1 : 0
