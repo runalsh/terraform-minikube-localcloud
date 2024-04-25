@@ -9,7 +9,7 @@ resource "helm_release" "cert-manager" {
   name = "cert-manager"
   repository = "https://charts.jetstack.io"
   chart      = "cert-manager"
-  version    = "1.14.4"
+  version    = "v1.14.5"
   namespace  = "cert-manager"
   count = var.cert-manager ? 1 : 0  
   // wait       = true
