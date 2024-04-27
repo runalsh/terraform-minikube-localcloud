@@ -24,6 +24,7 @@ Ready:
   -  local-portainer for manage remote vps docker instances,
   -  kubeapps as module
   -  reloader
+  -  knative + kourier
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,

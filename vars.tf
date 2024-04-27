@@ -186,6 +186,12 @@ variable "reloader" {
   type = bool
   default = false
 }
+
+variable "knative" {
+  type = bool
+  default = false
+}
+
 variable "vault-k8s-vaultparam" {
   type = object({
     nodes     = optional(number, 3)

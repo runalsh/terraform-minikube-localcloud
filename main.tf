@@ -64,6 +64,10 @@ terraform {
       source = "pvotal-tech/k3d"
       version = "0.0.7"
     }
+    kustomization = {
+      source = "kbst/kustomization"
+      version = "0.9.5"
+    }
   }
 }
 
@@ -88,3 +92,7 @@ provider "helm" {
 # provider "minikube" {
 #   kubernetes_version = var.minikube_param.kubernetes_version
 # }
+
+provider "kustomization" {
+  kubeconfig_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
+}

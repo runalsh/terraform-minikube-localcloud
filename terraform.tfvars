@@ -35,6 +35,7 @@ vault-consul = false
 csi-secret-storage = false
 local-vault = false
 reloader = false
+knative = false
 
 local-oci-repo = false
 local-oci-repoparam = {
