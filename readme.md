@@ -1,5 +1,5 @@
 # self-hosted cloud for local development ( windows )
-## iac terraform - minikube - vm hyper-v
+## iac terraform - minikube - vm hyper-v/docker
 Ready:
   -  argocd,
   -  grafana prometheus loki promtail,
