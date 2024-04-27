@@ -4,7 +4,7 @@
 
 local_domain = "minikube.local"
 
-minikube = false
+minikube = true
 minikube_param = {
     nodes =  "1"
     kubernetes_version   = "1.29.3"
@@ -34,13 +34,14 @@ vault = false
 vault-consul = false
 csi-secret-storage = false
 local-vault = false
+reloader = false
 
 local-oci-repo = false
 local-oci-repoparam = {
   registry2 = true
   harbour = false
-  chartmuseum = false
-  chartmuseum-ui = false
+  chartmuseum = true
+  chartmuseum-ui = true
   registry-ui = true
 }
 

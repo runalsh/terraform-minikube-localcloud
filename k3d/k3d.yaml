@@ -59,18 +59,18 @@ registries: # define how registries should be created or used
       "docker.io":
         endpoint:
           - http://registry-io:5000
-  #     "quay.io":
-  #       endpoint:
-  #         -  http://registry-io:5000
-  #     "ghcr.io":
-  #       endpoint:
-  #         -  http://registry-io:5000
-  #     "gcr.io":
-  #       endpoint:
-  #         -  http://registry-io:5000
-  #     "public.ecr.aws":
-  #       endpoint:
-  #         -  http://registry-io:5000
+      # "quay.io":
+      #   endpoint:
+      #     -  http://registry-io:5000
+      # "ghcr.io":
+      #   endpoint:
+      #     -  http://registry-io:5000
+      # "gcr.io":
+      #   endpoint:
+      #     -  http://registry-io:5000
+      # "public.ecr.aws":
+      #   endpoint:
+      #     -  http://registry-io:5000
   k3d: # k3d runtime settings
     wait: true # wait for cluster to be usable before returning; same as `--wait` (default: true)
     timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`

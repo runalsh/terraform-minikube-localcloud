@@ -23,6 +23,7 @@ Ready:
   -  minikube as module,
   -  local-portainer for manage remote vps docker instances,
   -  kubeapps as module
+  -  reloader
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,

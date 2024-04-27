@@ -7,7 +7,7 @@ resource "kubernetes_namespace" "vault-namespace" {
 
 resource "helm_release" "vault" {
   name             = "vault"
-  repository       = "https://registry.nationalcdn.ru//"
+  repository       = "https://hashicorp-helm.comcloud.xyz/"
   chart            = "vault"
   version          = "0.28.0"
   # chart             = "charts/vault"

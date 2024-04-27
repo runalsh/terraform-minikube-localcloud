@@ -182,6 +182,10 @@ variable "kubeapps" {
   default = false
 }
 
+variable "reloader" {
+  type = bool
+  default = false
+}
 variable "vault-k8s-vaultparam" {
   type = object({
     nodes     = optional(number, 3)
@@ -259,8 +263,8 @@ variable "minikube_param" {
     nodes = optional(string, "1")
     kubernetes_version   = optional(string, "1.29.3")
     cluster_name = optional(string, "minikube")
-    memory = optional(string, "5000")
-    cpu = optional(string, "8")
+    memory = optional(string, "6000")
+    cpu = optional(string, "12")
     driver = optional(string, "docker")
   })
 }

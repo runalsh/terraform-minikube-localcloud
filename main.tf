@@ -84,3 +84,7 @@ provider "helm" {
     config_context = var.minikube_param.cluster_name
   }
 }
+
+# provider "minikube" {
+#   kubernetes_version = var.minikube_param.kubernetes_version
+# }
