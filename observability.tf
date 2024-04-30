@@ -23,7 +23,7 @@ resource "helm_release" "loki" {
   name       = "loki"
   repository = "https://grafana.github.io/helm-charts"
   chart      = "loki"
-  version    = "6.4.1"
+  version    = "6.4.2"
   namespace  = "observability"
   count = var.observability_loki ? 1 : 0
 
@@ -48,7 +48,7 @@ resource "helm_release" "kube-prometheus" {
   name       = "kube-prometheus-stack"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
-  version    = "58.2.2"
+  version    = "58.3.0"
   namespace  = "observability"
   count = var.observability_kube-prometheus ? 1 : 0
 
