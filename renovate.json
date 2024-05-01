@@ -10,6 +10,9 @@
       "automerge": true,
       "groupName": "dependency updates"
     },
+    "git-submodules": {
+        "enabled": true
+    },    
     {
         "matchDatasources": ["terraform-provider"],
         "description" : "matchPackagePatterns ^cloudflare",
