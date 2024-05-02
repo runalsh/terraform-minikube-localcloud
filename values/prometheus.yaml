@@ -60,3 +60,7 @@ prometheus:
     #     queue_config:
     #       batch_send_deadline: 30s
     #       max_shards: 10
+    
+# prometheusSpec:
+#   additionalScrapeConfigs:
+        

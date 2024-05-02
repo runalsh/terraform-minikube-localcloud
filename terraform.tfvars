@@ -36,7 +36,7 @@ csi-secret-storage = false
 local-vault = false
 reloader = false
 knative = false
-ydb=false
+ydb = true
 
 local-oci-repo = false
 local-oci-repoparam = {

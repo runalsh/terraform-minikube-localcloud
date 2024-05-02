@@ -1,14 +1,15 @@
 apiVersion: ydb.tech/v1alpha1
 kind: Storage
 metadata:
-  name: storage-minikube-sample
+  name: storage-sample
+  namespace: ${namespace}
 spec:
   dataStore: []
   image:
     name: cr.yandex/crptqonuodf51kdj7a7d/ydb:23.3.17
   nodes: 1
   domain: Root
-  erasure: none
+  erasure: none  # none=1-1      https://ydb.tech/docs/ru/concepts/topology
   configuration: |-
     static_erasure: none
     host_configs:
@@ -18,7 +19,7 @@ spec:
         host_config_id: 1
     grpc_config:
       port: 2135
-    domains_config:
+    domains_config:  # https://ydb.tech/docs/ru/deploy/configuration/config#domains-blob
       domain:
         - name: Root
           storage_pool_types:
@@ -92,9 +93,10 @@ spec:
 apiVersion: ydb.tech/v1alpha1
 kind: StorageMonitoring
 metadata:
-  name: storage-minikube-sample
+  name: storage-sample
+  namespace: ${namespace}
   labels:
     release: prom
 spec:
   storageRef:
-    name: storage-minikube-sample    
+    name: storage-sample

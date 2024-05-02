@@ -1,7 +1,8 @@
 apiVersion: ydb.tech/v1alpha1
 kind: Database
 metadata:
-  name: database-minikube-sample
+  name: database-sample
+  namespace: ${namespace}
 spec:
   image:
     name: cr.yandex/crptqonuodf51kdj7a7d/ydb:23.3.17
@@ -15,14 +16,16 @@ spec:
       - count: 1
         unitKind: ssd
   storageClusterRef:
-    name: storage-minikube-sample
+    name: storage-sample
 ---
+
 apiVersion: ydb.tech/v1alpha1
 kind: DatabaseMonitoring
 metadata:
-  name: database-minikube-sample
+  name: database-sample
+  namespace: ${namespace}
   labels:
     release: prom
 spec:
   databaseRef:
-    name: database-minikube-sample  
+    name: database-sample
