@@ -51,7 +51,7 @@ registries: # define how registries should be created or used
       username: "" # unauthenticated
       password: "" # unauthenticated
     volumes:
-      - /F/Temp/terraform-minikube-localcloud/local/k3d:/var/lib/registry # persist registry data locally
+      - /F/VB/!work/terraform-minikube-localcloud/local/k3d:/var/lib/registry # persist registry data locally
   # use:
   #   - k3d-myotherregistry:5000 # some other k3d-managed registry; same as `--registry-use 'k3d-myotherregistry:5000'`
   config: | # define contents of the `registries.yaml` file (or reference a file); same as `--registry-config /path/to/config.yaml`

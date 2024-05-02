@@ -1,0 +1,28 @@
+apiVersion: ydb.tech/v1alpha1
+kind: Database
+metadata:
+  name: database-minikube-sample
+spec:
+  image:
+    name: cr.yandex/crptqonuodf51kdj7a7d/ydb:23.3.17
+  nodes: 1
+  domain: Root
+  service:
+    grpc:
+      externalHost: localhost
+  resources:
+    storageUnits:
+      - count: 1
+        unitKind: ssd
+  storageClusterRef:
+    name: storage-minikube-sample
+---
+apiVersion: ydb.tech/v1alpha1
+kind: DatabaseMonitoring
+metadata:
+  name: database-minikube-sample
+  labels:
+    release: prom
+spec:
+  databaseRef:
+    name: database-minikube-sample  

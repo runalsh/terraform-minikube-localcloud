@@ -37,6 +37,11 @@ variable "portainer" {
   default = false
 }
 
+variable "ydb" {
+  type = bool
+  default = false
+}
+
 variable "nexus" {
   type = bool
   default = false

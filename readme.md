@@ -25,6 +25,7 @@ Ready:
   -  kubeapps as module
   -  reloader
   -  knative + kourier
+  -  YDB
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
