@@ -3,7 +3,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: grafana-server-https
-  namespace: observability
+  namespace: ydb
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-passthrough: "true"
@@ -17,6 +17,6 @@ spec:
           path: /
           backend:
             service: 
-              name: grafana
+              name: kube-prometheus-stack-grafana
               port: 
-                name: service
+                number: 3000

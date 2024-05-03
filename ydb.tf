@@ -34,41 +34,17 @@ resource "kubectl_manifest" "ydb-database" {
     count = var.ydb ? 1 : 0
 }
 
-# resource "kubectl_manifest" "servicemonitor" {
-#     yaml_body = <<YAML
-# apiVersion: monitoring.coreos.com/v1
-# kind: ServiceMonitor
-# metadata:
-#   name: ydb-operator
-#   namespace: ydb
-#   labels:
-#     app.kubernetes.io/instance: ydb-operator
-#     app.kubernetes.io/managed-by: Helm
-#     app.kubernetes.io/name: ydb-operator
-#     app.kubernetes.io/version: REPLACED_BY_CHART_APP_VERSION_IF_UNSPECIFIED
-#     helm.sh/chart: ydb-operator-0.5.6
-# spec:
-#   endpoints:
-#     - path: /metrics
-#       port: http
-#   selector:
-#     matchLabels:
-#       app.kubernetes.io/instance: ydb-operator
-#       app.kubernetes.io/name: ydb-operator
-# YAML
-# }
-
 # https://github.com/ydb-platform/ydb/tree/main/ydb/deploy/helm/ydb-prometheus
 
-resource "helm_release" "ydb_prometheus" {
-  name       = "ydb-prometheus"
-  repository = "charts"
-  chart      = "ydb-prometheus"
-  version    = "0.1.0"
-  namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
-  count = var.ydb ? 1 : 0
-  depends_on = [resource.kubernetes_namespace.ydb-namespace, resource.helm_release.ydb-kube-prometheus]
-}
+# resource "helm_release" "ydb_prometheus" {
+#   name       = "ydb-prometheus"
+#   repository = "charts"
+#   chart      = "ydb-prometheus"
+#   version    = "0.1.0"
+#   namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
+#   count = var.ydb ? 1 : 0
+#   depends_on = [resource.kubernetes_namespace.ydb-namespace, resource.helm_release.ydb-kube-prometheus]
+# }
 
   # values\prometheus-ydb.yaml
 

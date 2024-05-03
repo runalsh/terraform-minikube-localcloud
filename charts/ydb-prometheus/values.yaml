@@ -34,11 +34,11 @@ prometheusConfig:
 
   # Additional scrape configs that referenced in prometheus.spec
   #
-  additionalScrapeConfigs:
-    # Generated secret key
-    key: additional-scrape-configs.yaml
-    # Generated secret name, if empty chart name will be used
-    name: ""
+  # additionalScrapeConfigs:
+  #   # Generated secret key
+  #   key: additional-scrape-configs.yaml
+  #   # Generated secret name, if empty chart name will be used
+  #   name: ""
 
 # YDB Monitoring related configuration
 ydb:
