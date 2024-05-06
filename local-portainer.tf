@@ -10,16 +10,21 @@
 resource "docker_container" "portainer" {
   count = var.local-portainer ? 1 : 0
   name = "portainer"
-  image = "portainer/portainer:latest" # portainer-ce:alpine-sts doesnt have live parallel connections and using old (2023) portainer:latest image v2.16.2
+  image = "portainer/portainer-ce:alpine" # portainer-ce:alpine-sts doesnt have live parallel connections and using old (2023) portainer:latest image v2.16.2
   env = [ "TZ=Europe/Moscow" ]
   ports {
-    internal = "9443"
+    internal = "9443" #https gui
     external = "9443"
     ip       = "0.0.0.0"
   }
   ports {
     internal = "8000"
     external = "8000"
+    ip       = "0.0.0.0"
+  }
+  ports {
+    internal = "9000"  #http gui
+    external = "9000"
     ip       = "0.0.0.0"
   }
   volumes {

@@ -1,3 +1,7 @@
+
+
+
+
 resource "kubernetes_namespace" "ydb-namespace" {
   metadata {
     name = "ydb"
@@ -10,7 +14,6 @@ resource "helm_release" "ydb_operator" {
   chart      = "ydb-operator"
   version    = "0.5.6"
   namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
-  count = var.ydb ? 1 : 0
   depends_on = [resource.kubernetes_namespace.ydb-namespace]
   set {
     name  = "metrics.enabled"
@@ -19,19 +22,17 @@ resource "helm_release" "ydb_operator" {
 }
 
 resource "kubectl_manifest" "ydb-storage" {
-    yaml_body = templatefile("${path.module}/manifests/ydb-storage.yml", {
+    yaml_body = templatefile("${path.module}/../manifests/ydb-storage.yml", {
       namespace   = kubernetes_namespace.ydb-namespace.metadata[0].name
   })
     depends_on = [kubernetes_namespace.ydb-namespace]
-    count = var.ydb ? 1 : 0
 }
 
 resource "kubectl_manifest" "ydb-database" {
-    yaml_body = templatefile("${path.module}/manifests/ydb-database.yml", {
+    yaml_body = templatefile("${path.module}/../manifests/ydb-database.yml", {
       namespace   = kubernetes_namespace.ydb-namespace.metadata[0].name
   })
     depends_on = [kubernetes_namespace.ydb-namespace, resource.kubectl_manifest.ydb-storage]
-    count = var.ydb ? 1 : 0
 }
 
 # https://github.com/ydb-platform/ydb/tree/main/ydb/deploy/helm/ydb-prometheus
@@ -54,9 +55,8 @@ resource "helm_release" "ydb-kube-prometheus" {
   chart      = "kube-prometheus-stack"
   version    = "58.3.1"
   namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
-  count = var.ydb ? 1 : 0
 
-  values = [file("${path.module}/values/prometheus-ydb.yaml")]
+  values = [file("${path.module}/../values/prometheus-ydb.yaml")]
   # may be here https://github.com/tiagoangelototvs/testkube-playground/blob/main/prometheus.tf
   # values https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
   depends_on = [ resource.kubernetes_namespace.ydb-namespace]
