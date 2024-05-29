@@ -29,8 +29,8 @@ Ready:
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,
-  -  jaeger,
-  -  openfaas (very very interesting),
+  -  jaeger + jaeger ingester + jaeger-ui + opensearch,
+  -  openfaas,
   -  trivy (aqua?),
   -  crossplane (for fun, idn working it with minikube or not)
 
