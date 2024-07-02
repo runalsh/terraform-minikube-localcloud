@@ -3,6 +3,7 @@
 # Ignorance is strength.
 
 local_domain = "minikube.local"
+kind_local_domain = "kind.local"
 
 minikube = false
 minikube_param = {

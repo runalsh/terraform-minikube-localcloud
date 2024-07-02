@@ -27,6 +27,11 @@ variable "local_domain" {
   default = "minikube.local"
 }
 
+variable "kind_local_domain" { 
+  type = string
+  default = "kind.local"
+}
+
 variable "minikube" {
   type = bool
   default = false
