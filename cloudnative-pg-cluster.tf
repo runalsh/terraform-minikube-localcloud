@@ -9,7 +9,7 @@ resource "helm_release" "cloudnative-pg-cluster" {
   name             = "cnpg"
   repository       = "https://cloudnative-pg.github.io/charts"
   chart            = "cluster"
-  version          = "0.0.8"
+  version          = "0.0.9"
   namespace        = "cloudnative-pg-cluster"
   count = var.cloudnative-pg-cluster ? 1 : 0    
   values = [file("${path.module}/values/cloudnative-pg-cluster.yaml")]

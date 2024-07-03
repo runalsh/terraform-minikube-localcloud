@@ -6,7 +6,7 @@ terraform {
   required_providers {
     helm = {
       source = "hashicorp/helm"
-      version = "2.13.2"
+      version = "2.14.0"
     }
     minikube = {
       source = "scott-the-programmer/minikube"
@@ -14,7 +14,7 @@ terraform {
     }
     kubernetes = {
       source = "hashicorp/kubernetes"
-      version = "2.30.0"
+      version = "2.31.0"
     }
     external = {
       source = "hashicorp/external"
@@ -50,7 +50,7 @@ terraform {
     }
     vault = {
       source = "hashicorp/vault"
-      version = "4.2.0"
+      version = "4.3.0"
     }
     tls = {
       source  = "hashicorp/tls"

@@ -12,7 +12,7 @@ resource "helm_release" "ydb_operator" {
   name       = "ydb-operator"
   repository = "https://charts.ydb.tech/"
   chart      = "ydb-operator"
-  version    = "0.5.6"
+  version    = "0.5.19"
   namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
   depends_on = [resource.kubernetes_namespace.ydb-namespace]
   set {
@@ -53,7 +53,7 @@ resource "helm_release" "ydb-kube-prometheus" {
   name       = "kube-prometheus-stack"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
-  version    = "58.3.1"
+  version    = "58.7.2"
   namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
 
   values = [file("${path.module}/../values/prometheus-ydb.yaml")]
