@@ -1,26 +1,24 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": ["config:base", "group:recommended", "config:recommended"],
+    "git-submodules": {
+    "enabled": true
+      },
     "terraform": {                                                                
       "depTypes": ["helm_release"]                                               
-    },
+      },
     "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "digest", "major"],
       "automerge": true,
       "groupName": "dependency updates"
-    },
-    "git-submodules": {
-        "enabled": true
-    },    
+    },   
     {
         "matchDatasources": ["terraform-provider"],
         "description" : "matchPackagePatterns ^cloudflare",
         "automerge": false
     }
-    ],
-   "description" : "ignoreDeps postgresql "
-
+      ]
 }     
 
 
