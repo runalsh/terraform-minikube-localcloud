@@ -104,7 +104,7 @@ resource "docker_container" "registry-ui" {
 resource "docker_container" "registry-harbor" {
   count = var.harbour ? 1 : 0 
   name = "registry-harbor"
-  image = "bitnami/harbor-registry:2.10.2"
+  image = "bitnami/harbor-registry:2.11.0"
   env = ["REGISTRY_HTTP_SECRET=fzAYNq8hNEgTxcS"]
   ports {
     internal = "5000"
@@ -132,7 +132,7 @@ resource "docker_container" "registry-harbor" {
 resource "docker_container" "chartmuseum" {
   count = var.chartmuseum ? 1 : 0 
   name = "chartmuseum"
-  image = "ghcr.io/helm/chartmuseum:v0.16.1"
+  image = "ghcr.io/helm/chartmuseum:v0.16.2"
   env = ["DEBUG=1", "STORAGE=local", "STORAGE_LOCAL_ROOTDIR=/charts"]
   ports {
     internal = "8080"
