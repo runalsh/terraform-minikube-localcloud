@@ -32,7 +32,22 @@ variable "kind_local_domain" {
   default = "kind.local"
 }
 
+variable "kind_cluster_name" { 
+  type = string
+  default = "kind"
+}
+
+variable "minikube_name" { 
+  type = string
+  default = "kind"
+}
+
 variable "minikube" {
+  type = bool
+  default = false
+}
+
+variable "kind" {
   type = bool
   default = false
 }
@@ -198,6 +213,11 @@ variable "reloader" {
 }
 
 variable "knative" {
+  type = bool
+  default = false
+}
+
+variable "cilium" {
   type = bool
   default = false
 }

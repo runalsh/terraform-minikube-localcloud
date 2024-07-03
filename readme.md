@@ -26,6 +26,7 @@ Ready:
   -  reloader
   -  knative + kourier
   -  YDB with prometheus stack
+  -  cilium + hubble (disable internal kube-proxy before)
 
 Plans: 
   -  integrate gitlab/github action with minio (as s3 cache) and harbor\nexus,

@@ -1,8 +1,6 @@
-provider "kind" {
-}
 
 resource "kind_cluster" "kind" {
-  name = "kind"
+  name = var.name
   wait_for_ready = true
 #   kubeconfig_path = pathexpand(locals.kubectl_config_path)
   kind_config {
@@ -14,6 +12,11 @@ resource "kind_cluster" "kind" {
     #       config_path = "${local.containerd_config_path}"
     #   TOML
     # ]
+    networking {
+      disable_default_cni = true
+      kube_proxy_mode = "none"
+    }
+
     node {
           role = "control-plane"
           image = "kindest/node:v1.30.2"
@@ -48,33 +51,23 @@ resource "kind_cluster" "kind" {
 }
 }
 
-# provider "helm" {
-#   kubernetes {
-#     config_path = var.kubectl_config_path == "" ? local.kubectl_config_path : var.kubectl_config_path
-#     config_context = "kind-${kind_cluster.kind.name}"
-#   }
+# data "http" "kind_ingress_http" {
+#   url = "https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml"
 # }
-
-data "http" "kind_ingress_http" {
-  url = "https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml"
-}
-data "kubectl_file_documents" "nginx_yaml_files" {
-  content = data.http.kind_ingress_http.response_body
-  depends_on = [ kind_cluster.kind ]
-}
-resource "kubectl_manifest" "nginx_manifest" {
-  provider = kubectl
-  for_each = data.kubectl_file_documents.nginx_yaml_files.manifests
-  yaml_body = each.value
-  wait = true
-  depends_on = [ kubernetes_namespace.nginx_namespace, kind_cluster.kind ]
-}
-resource "kubernetes_namespace" "nginx_namespace" {
-    metadata {
-      name = "ingress-nginx"
-    }
-    depends_on = [ kind_cluster.kind, data.kubectl_file_documents.nginx_yaml_files ]
-}
+# data "kubectl_file_documents" "ingress_yaml_files" {
+#   content = data.http.kind_ingress_http.response_body
+# }
+# resource "kubectl_manifest" "ingress_manifest" {
+#   for_each  = data.kubectl_file_documents.ingress_yaml_files.manifests
+#   yaml_body = each.value
+#   depends_on = [ kubernetes_namespace.ingress_namespace, kind_cluster.kind ]
+# }
+# resource "kubernetes_namespace" "ingress_namespace" {
+#     metadata {
+#       name = "ingress"
+#     }
+#     depends_on = [ kind_cluster.kind, data.kubectl_file_documents.ingress_yaml_files ]
+# }
 
 # #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -113,7 +106,7 @@ resource "kubernetes_namespace" "nginx_namespace" {
 #     name = "configs.secret.argocdServerAdminPassword"
 #     value = bcrypt(var.argocd_admin_pass)
 #   }
-#   depends_on = [ kubectl_manifest.nginx_manifest ]
+#   depends_on = [ kubectl_manifest.ingress_manifest ]
 # }
 
 # // adding all the declartive argocd in the argo-apps folder to the cluster
@@ -125,56 +118,50 @@ resource "kubernetes_namespace" "nginx_namespace" {
 # #   depends_on = [ helm_release.helm_argo ]
 # # }
 
+# resource "helm_release" "metrics-server" {
+#   name       = "metrics-server"
+#   chart      = "metrics-server"
+#   namespace  = "kube-system"
+#   repository = "https://kubernetes-sigs.github.io/metrics-server"
+
+#   set {
+#     name  = "args"
+#     value = "{--kubelet-insecure-tls}"
+#   }
+#   depends_on = [ kind_cluster.kind ]
+# }
+
 # locals {
 #   cilium_cert_secret = "cilium-https-cert"
 # }
 
-# resource "helm_release" "cilium" {
-# #   count            = var.use_cilium ? 1 : 0
-#   name             = "cilium"
-#   repository       = "https://helm.cilium.io/"
-#   chart            = "cilium"
-#   version          = "1.15.6"
+#cilium install --version 1.15.6
+#cilium hubble enable --ui
+#cilium hubble ui
+
+resource "helm_release" "cilium" {
+  name             = "cilium"
+  repository       = "https://helm.cilium.io/"
+  chart            = "cilium"
+  version          = "1.15.6"
 #   namespace        = "cilium"
-#   create_namespace = true
+  namespace        = "kube-system"
+  wait             = true
+  wait_for_jobs    = true
+  create_namespace = true
+  timeout          = 600
+  values = [file("${path.module}/../values/cilium.yaml")]
+}
 
-# #   set {
-# #     name  = "image.pullPolicy"
-# #     value = "IfNotPresent"
-# #   }
-
-# #   set {
-# #     name  = "ipam.mode"
-# #     value = "kubernetes"
-# #   }
-
-# #   set {
-# #     name  = "hubble.enabled"
-# #     value = "true"
-# #   }
-
-# #   set {
-# #     name  = "hubble.ui.enabled"
-# #     value = "true"
-# #   }
-
-# #   set {
-# #     name  = "hubble.relay.enabled"
-# #     value = "true"
-# #   }
-# #   # Make sure `kind` has written the `kubeconfig` before we move forward
-# #   # with installing helm.
-# }
-
-# module "cilium_tls" {
-# #   count     = var.use_cilium ? 1 : 0
-#   source    = "./modules/tls-cert"
-#   namespace = helm_release.cilium[0].namespace
-#   dns_names = [
-#     "hubble.${var.base_domain}"
-#   ]
-# #   certs_path = var.certs_path
-# }
+# # module "cilium_tls" {
+# # #   count     = var.use_cilium ? 1 : 0
+# #   source    = "./modules/tls-cert"
+# #   namespace = helm_release.cilium[0].namespace
+# #   dns_names = [
+# #     "hubble.${var.base_domain}"
+# #   ]
+# # #   certs_path = var.certs_path
+# # }
 
 # resource "kubectl_manifest" "hubble_grpc_service" {
 # #   count     = var.use_cilium ? 1 : 0

@@ -3,7 +3,6 @@
 # Ignorance is strength.
 
 local_domain = "minikube.local"
-kind_local_domain = "kind.local"
 
 minikube = false
 minikube_param = {
@@ -14,6 +13,10 @@ minikube_param = {
     cpu = "12"
     driver = "docker" #hyperv
 }
+
+kind = false
+kind_cluster_name = "kind"
+kind_local_domain = "kind.local"
 
 portainer = false
 nexus = false
@@ -38,6 +41,8 @@ local-vault = false
 reloader = false
 knative = false
 ydb = false
+kubeapps = false
+cilium = false
 
 local-oci-repo = false
 local-oci-repoparam = {
@@ -49,7 +54,6 @@ local-oci-repoparam = {
 }
 
 local-portainer = false
-kubeapps = false
 
 # vault k8s pure
 vault-k8s-tls = false
