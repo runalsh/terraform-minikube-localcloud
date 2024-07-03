@@ -12,11 +12,6 @@
       "matchUpdateTypes": ["minor", "patch", "digest", "major"],
       "automerge": true,
       "groupName": "dependency updates"
-    },   
-    {
-        "matchDatasources": ["terraform-provider"],
-        "description" : "matchPackagePatterns ^cloudflare",
-        "automerge": false
     }
       ]
 }     
