@@ -7,6 +7,9 @@
     "terraform": {                                                                
       "depTypes": ["helm_release"]                                               
       },
+    "patch": {
+        "enabled": false
+    },
     "packageRules": [
     {
       "matchUpdateTypes": ["minor", "digest", "major"],
