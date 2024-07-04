@@ -9,7 +9,7 @@
       },
     "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "digest", "major"],
+      "matchUpdateTypes": ["minor", "digest", "major"],
       "automerge": true,
       "groupName": "dependency updates"
     }
