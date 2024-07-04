@@ -9,8 +9,8 @@ minikube_param = {
     nodes =  "1"
     kubernetes_version   = "1.29.3"
     cluster_name = "minikube"
-    memory = "6000"
-    cpu = "12"
+    memory = "13000"
+    cpu = "6"
     driver = "docker" #hyperv
 }
 

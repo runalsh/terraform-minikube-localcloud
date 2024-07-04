@@ -7,3 +7,4 @@ githubkey.json
 docker-registry/
 portainer-data/
 local/
+kind-config

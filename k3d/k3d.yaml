@@ -1,7 +1,7 @@
 apiVersion: k3d.io/v1alpha5 # this will change in the future as we make everything more stable
 kind: Simple # internally, we also have a Cluster config, which is not yet available externally
 metadata:
-  name: mycluster # name that you want to give to your cluster (will still be prefixed with `k3d-`)
+  name: cluster # name that you want to give to your cluster (will still be prefixed with `k3d-`)
 servers: 1 # same as `--servers 1`
 agents: 0 # same as `--agents 2`
 kubeAPI: # same as `--api-port myhost.my.domain:6445` (where the name would resolve to 127.0.0.1)
@@ -9,7 +9,7 @@ kubeAPI: # same as `--api-port myhost.my.domain:6445` (where the name would reso
   hostIP: 0.0.0.0 # where the Kubernetes API will be listening on
   hostPort: "6445" # where the Kubernetes API listening port will be mapped to on your host system
 image: rancher/k3s:latest # same as `--image rancher/k3s:v1.20.4-k3s1`
-network: my-custom-net # same as `--network my-custom-net`
+network: k3d-net # same as `--network my-custom-net`
 # subnet: "172.28.0.0/16" # same as `--subnet 172.28.0.0/16`
 token: superSecretToken # same as `--token superSecretToken`
 # volumes: # repeatable flags are represented as YAML lists
@@ -51,7 +51,7 @@ registries: # define how registries should be created or used
       username: "" # unauthenticated
       password: "" # unauthenticated
     volumes:
-      - /F/VB/!work/terraform-minikube-localcloud/local/k3d:/var/lib/registry # persist registry data locally
+      - /F/VB/a/terraform-minikube-localcloud/local/k3d:/var/lib/registry # persist registry data locally
   # use:
   #   - k3d-myotherregistry:5000 # some other k3d-managed registry; same as `--registry-use 'k3d-myotherregistry:5000'`
   config: | # define contents of the `registries.yaml` file (or reference a file); same as `--registry-config /path/to/config.yaml`

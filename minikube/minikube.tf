@@ -1,6 +1,6 @@
 resource "minikube_cluster" "cluster" {
   driver            = var.driver # docker hyperv
-#   cni     = "auto" #calico
+  cni     = "auto" #"auto" #calico cilium
   cluster_name      = var.name
   cpus              = var.cpu
   memory            = var.memory
