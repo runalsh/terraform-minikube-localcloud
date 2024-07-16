@@ -10,6 +10,9 @@
     "patch": {
         "enabled": false
     },
+    "digest": {
+        "enabled": false
+    },    
     "packageRules": [
     {
       "matchUpdateTypes": ["minor", "major"],
