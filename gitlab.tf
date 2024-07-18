@@ -9,7 +9,7 @@ resource "helm_release" "gitlab" {
   name = "gitlab"
   repository = "https://charts.gitlab.io/"
   chart      = "gitlab"
-  version = "8.1.1"
+  version = "8.2.0"
   namespace  = "gitlab"
   count = var.gitlabrunner ? 1 : 0
   values = [file("${path.module}/values/gitlab.yaml")]
