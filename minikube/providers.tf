@@ -4,7 +4,7 @@ terraform {
   required_providers {
     minikube = {
       source = "scott-the-programmer/minikube"
-      version = "0.3.10"
+      version = "0.4.0"
     }
     local = {
       source = "hashicorp/local"
