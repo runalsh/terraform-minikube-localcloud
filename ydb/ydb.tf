@@ -53,7 +53,7 @@ resource "helm_release" "ydb-kube-prometheus" {
   name       = "kube-prometheus-stack"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"
-  version    = "61.6.0"
+  version    = "61.7.0"
   namespace  = kubernetes_namespace.ydb-namespace.metadata[0].name
 
   values = [file("${path.module}/../values/prometheus-ydb.yaml")]
